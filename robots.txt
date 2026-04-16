@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xn--edelwild-krger-qsb.de/sitemap.xml

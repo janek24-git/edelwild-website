@@ -3,8 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Edelwild – Natur in jedem Bissen</title>
-  <meta name="description" content="Wildfleisch direkt vom Jäger – vakuumfrisch aus dem Spessart. Reh, Wildschwein, Hirsch. Direktverkauf durch Anton Krüger." />
+
+  <title>Edelwild – Wildfleisch direkt vom Jäger | Spessart, Aschaffenburg, Hösbach</title>
+  <meta name="description" content="Frisches Wildfleisch direkt vom Jäger aus dem Spessart. Reh, Hirsch und Wildschwein – vakuumiert, regional aus Hösbach bei Aschaffenburg. Jetzt bestellen." />
+  <meta name="keywords" content="Wildfleisch kaufen, Wildfleisch Spessart, Rehfleisch direkt vom Jäger, Wildschwein Aschaffenburg, Hirschfleisch Hösbach, Wildfleisch vakuumiert, Direktverkauf Wild" />
+  <link rel="canonical" href="https://xn--edelwild-krger-qsb.de/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xn--edelwild-krger-qsb.de/" />
+  <meta property="og:title" content="Edelwild – Wildfleisch direkt vom Jäger | Spessart" />
+  <meta property="og:description" content="Frisches Wildfleisch direkt vom Jäger aus dem Spessart. Reh, Hirsch und Wildschwein – vakuumiert, regional aus Hösbach bei Aschaffenburg." />
+  <meta property="og:image" content="https://xn--edelwild-krger-qsb.de/images/hirsch.png" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Edelwild" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Edelwild – Wildfleisch direkt vom Jäger | Spessart" />
+  <meta name="twitter:description" content="Reh, Hirsch und Wildschwein – vakuumiert, regional aus Hösbach bei Aschaffenburg." />
+  <meta name="twitter:image" content="https://xn--edelwild-krger-qsb.de/images/hirsch.png" />
+
+  <!-- JSON-LD: LocalBusiness + Produkte -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://xn--edelwild-krger-qsb.de/#business",
+        "name": "Edelwild",
+        "description": "Privater Direktverkauf von Wildfleisch aus eigener Jagd im Spessart.",
+        "founder": {
+          "@type": "Person",
+          "name": "Anton Krüger"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Mühlstraße 52",
+          "addressLocality": "Hösbach",
+          "postalCode": "63768",
+          "addressCountry": "DE",
+          "addressRegion": "Bayern"
+        },
+        "telephone": "+491754130040",
+        "email": "anton@edelwild-krüger.de",
+        "url": "https://xn--edelwild-krger-qsb.de/",
+        "areaServed": ["Spessart", "Aschaffenburg", "Hösbach", "Bayern"],
+        "priceRange": "€€",
+        "image": "https://xn--edelwild-krger-qsb.de/images/hirsch.png"
+      },
+      {
+        "@type": "Product",
+        "name": "Rehfleisch vakuumiert",
+        "description": "Zart, mager, aromatisch. Rücken, Keule und Gulasch – vakuumiert und versandfertig aus dem Spessart.",
+        "brand": { "@type": "Brand", "name": "Edelwild" },
+        "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
+      },
+      {
+        "@type": "Product",
+        "name": "Wildschwein aus dem Spessart",
+        "description": "Intensiv im Geschmack, natürlich aufgewachsen. Schulter, Keule, Bratwurst – je nach Saison.",
+        "brand": { "@type": "Brand", "name": "Edelwild" },
+        "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
+      },
+      {
+        "@type": "Product",
+        "name": "Hirschfleisch Premiumqualität",
+        "description": "Edel und kräftig. Rücken und Keule in Premiumqualität – direkt aus dem Spessart.",
+        "brand": { "@type": "Brand", "name": "Edelwild" },
+        "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTMKJRY6WF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FTMKJRY6WF');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
@@ -73,36 +155,29 @@
     .hero-photo {
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
-      opacity: 0.4;
-      transition: opacity 0.6s;
+      opacity: 0.4; transition: opacity 0.6s;
     }
     .hero-photo[data-loaded] { opacity: 0.4; }
     .hero-content { position: relative; z-index: 2; }
     .hero-wordmark {
       font-family: 'Cinzel', serif;
       font-size: clamp(3rem, 10vw, 5.5rem);
-      letter-spacing: 0.22em;
-      color: var(--gold);
-      font-weight: 400;
-      margin-bottom: 0.4rem;
+      letter-spacing: 0.22em; color: var(--gold);
+      font-weight: 400; margin-bottom: 0.4rem;
       animation: fadeUp 1.2s ease both;
       filter: drop-shadow(0 4px 40px rgba(212,168,75,0.22));
     }
     .hero-tagline {
       font-family: 'Cinzel', serif;
       font-size: clamp(0.6rem, 2vw, 0.8rem);
-      letter-spacing: 0.38em;
-      color: var(--gold-light);
+      letter-spacing: 0.38em; color: var(--gold-light);
       text-transform: uppercase;
       animation: fadeUp 1.2s 0.25s ease both;
-      margin-bottom: 3rem;
-      opacity: 0.75;
+      margin-bottom: 3rem; opacity: 0.75;
     }
     .hero-cta {
-      display: inline-block;
-      padding: 0.9rem 2.8rem;
-      border: 1px solid var(--gold-dim);
-      color: var(--gold-light);
+      display: inline-block; padding: 0.9rem 2.8rem;
+      border: 1px solid var(--gold-dim); color: var(--gold-light);
       font-family: 'Cinzel', serif;
       font-size: 0.72rem; letter-spacing: 0.22em;
       text-decoration: none;
@@ -153,8 +228,7 @@
         var(--forest-mid);
     }
     .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: center;
     }
     @media (max-width: 700px) {
@@ -167,8 +241,7 @@
       position: relative; overflow: hidden;
     }
     .story-photo::after {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(20,26,16,0.5) 0%, transparent 50%);
       pointer-events: none;
     }
@@ -197,8 +270,7 @@
       gap: 1.5rem;
     }
     .product-card {
-      border: 1px solid rgba(212,168,75,0.25);
-      overflow: hidden;
+      border: 1px solid rgba(212,168,75,0.25); overflow: hidden;
       transition: border-color 0.3s, transform 0.3s;
       background: rgba(212,168,75,0.02);
     }
@@ -226,9 +298,24 @@
       font-size: 0.85rem; letter-spacing: 0.15em;
       color: var(--gold); margin-bottom: 0.6rem;
     }
-    .product-desc {
-      font-size: 1rem; line-height: 1.7; opacity: 0.75;
+    .product-desc { font-size: 1rem; line-height: 1.7; opacity: 0.75; }
+
+    /* ── GEWÜRZE ──────────────────────────── */
+    #gewuerze {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(212,168,75,0.06) 0%, transparent 60%),
+        var(--forest-mid);
+      text-align: center;
     }
+    .spice-note {
+      margin-top: 3rem;
+      font-size: 1rem; line-height: 1.8; opacity: 0.6;
+      font-style: italic;
+    }
+    .spice-note a {
+      color: var(--gold); text-decoration: none;
+    }
+    .spice-note a:hover { text-decoration: underline; }
 
     /* ── MOOD STRIP ───────────────────────── */
     #mood {
@@ -307,6 +394,17 @@
       font-size: 1rem; letter-spacing: 0.32em;
       color: var(--gold-dim); margin-bottom: 1.8rem;
     }
+    .footer-nav {
+      display: flex; justify-content: center; gap: 2rem;
+      list-style: none; margin-bottom: 2.5rem;
+    }
+    .footer-nav a {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.2em; color: var(--gold-dim);
+      text-decoration: none; opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+    .footer-nav a:hover { opacity: 1; }
     .impressum {
       font-size: 0.82rem; line-height: 2;
       color: var(--text); opacity: 0.42;
@@ -344,14 +442,16 @@
   <ul class="nav-links">
     <li><a href="#story">Über uns</a></li>
     <li><a href="#produkte">Produkte</a></li>
+    <li><a href="#gewuerze">Gewürze</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="/blog/">Blog</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-photo" data-src="images/hirsch.png" role="img" aria-label="Spessart Wald"></div>
+  <div class="hero-photo" data-src="images/hirsch.png" role="img" aria-label="Hirsch im Spessart – Edelwild Wildfleisch aus Hösbach bei Aschaffenburg"></div>
   <div class="hero-content">
     <h1 class="hero-wordmark">EDELWILD</h1>
     <p class="hero-tagline">Natur in jedem Bissen</p>
@@ -367,7 +467,7 @@
 <section id="story">
   <div class="container">
     <div class="story-grid reveal">
-      <div class="story-photo" data-src="images/mood_spessart.png" role="img" aria-label="Jäger im Spessart">
+      <div class="story-photo" data-src="images/mood_spessart.png" role="img" aria-label="Spessart Wald – Jagdrevier von Anton Krüger aus Hösbach">
         <span class="story-photo-label">SPESSART · ANTON KRÜGER</span>
       </div>
       <div class="story-text">
@@ -391,37 +491,81 @@
     <p class="products-intro reveal">Direkt vom Jäger — vakuumiert, portioniert, versandfertig.<br>Saisonal verfügbar, solange der Vorrat reicht.</p>
     <div class="product-grid">
 
-      <article class="product-card reveal">
-        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Rehfleisch vakuumiert">
+      <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
+        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Rehfleisch vakuumiert vom Jäger aus dem Spessart – Rücken, Keule, Gulasch">
           <div class="product-photo-label">VAKUUMIERT · PORTIONIERT</div>
         </div>
         <div class="product-body">
-          <p class="product-name">REHFLEISCH</p>
-          <p class="product-desc">Zart, mager, aromatisch. Rücken, Keule und Gulasch — vakuumiert und versandfertig.</p>
+          <h3 class="product-name" itemprop="name">REHFLEISCH</h3>
+          <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken, Keule und Gulasch — vakuumiert und versandfertig.</p>
         </div>
       </article>
 
-      <article class="product-card reveal">
-        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Wildschwein aus dem Spessart">
+      <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
+        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Wildschwein aus dem Spessart – vakuumiert, Schulter, Keule und Bratwurst">
           <div class="product-photo-label">SPESSART · SAISONAL</div>
         </div>
         <div class="product-body">
-          <p class="product-name">WILDSCHWEIN</p>
-          <p class="product-desc">Intensiv im Geschmack, natürlich aufgewachsen. Schulter, Keule, Bratwurst — je nach Saison.</p>
+          <h3 class="product-name" itemprop="name">WILDSCHWEIN</h3>
+          <p class="product-desc" itemprop="description">Intensiv im Geschmack, natürlich aufgewachsen. Schulter, Keule, Bratwurst — je nach Saison.</p>
         </div>
       </article>
 
-      <article class="product-card reveal">
-        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Hirschfleisch aus dem Spessart">
+      <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
+        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Hirschfleisch Premiumqualität aus dem Spessart – Rücken und Keule vakuumiert">
           <div class="product-photo-label">PREMIUM · SPESSART</div>
         </div>
         <div class="product-body">
-          <p class="product-name">HIRSCH</p>
-          <p class="product-desc">Edel und kräftig. Rücken und Keule in Premiumqualität — direkt aus dem Spessart.</p>
+          <h3 class="product-name" itemprop="name">HIRSCH</h3>
+          <p class="product-desc" itemprop="description">Edel und kräftig. Rücken und Keule in Premiumqualität — direkt aus dem Spessart.</p>
         </div>
       </article>
 
     </div>
+  </div>
+</section>
+
+<!-- GEWÜRZE -->
+<section id="gewuerze">
+  <div class="container">
+    <p class="section-label reveal">Zubehör</p>
+    <h2 class="section-title reveal">Wildgewürze<br><em>aus dem Spessart</em></h2>
+    <div class="divider center reveal"></div>
+    <p class="products-intro reveal">Die passenden Gewürze zum Wildfleisch — handverlesen, natürlich, ohne Zusatzstoffe.</p>
+    <div class="product-grid">
+
+      <article class="product-card reveal">
+        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Wildgewürzmischung Spessart mit Wacholderbeeren, Lorbeer, Rosmarin und Thymian">
+          <div class="product-photo-label">KLASSISCH · AROMATISCH</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">WILDGEWÜRZ SPESSART</h3>
+          <p class="product-desc">Wacholderbeeren, Lorbeer, Rosmarin, Thymian. Die klassische Mischung für Reh und Hirsch.</p>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Wildmarinade Dunkel auf Rotweinnbasis, ideal für Wildschwein">
+          <div class="product-photo-label">ROTWEIN · TIEFGRÜNDIG</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">WILDMARINADE DUNKEL</h3>
+          <p class="product-desc">Rotwein-Basis, dunkle Gewürze, leichte Schärfe. Ideal für Wildschwein und Schmorgerichte.</p>
+        </div>
+      </article>
+
+      <article class="product-card reveal">
+        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Kräutersalz Wild mit Meersalz, Bergkräutern und Knoblauch">
+          <div class="product-photo-label">MEERSALZ · BERGKRÄUTER</div>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">KRÄUTERSALZ WILD</h3>
+          <p class="product-desc">Meersalz, Bergkräuter, Knoblauch. Vielseitig einsetzbar — zum Würzen vor und nach dem Braten.</p>
+        </div>
+      </article>
+
+    </div>
+    <p class="spice-note reveal">Gewürze auf Anfrage — <a href="https://wa.me/491754130040">schreib uns einfach per WhatsApp.</a></p>
   </div>
 </section>
 
@@ -449,17 +593,17 @@
     <div class="divider center reveal"></div>
     <p class="contact-intro reveal">Saisonales Angebot, begrenzte Mengen. Schreib einfach — per WhatsApp oder Mail. Anton antwortet persönlich.</p>
     <div class="contact-buttons reveal">
-      <a href="https://wa.me/491754130040" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+      <a href="https://wa.me/491754130040" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Edelwild per WhatsApp kontaktieren">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
       </a>
-      <a href="mailto:anton@edelwild-kr%C3%BCger.de" class="btn btn-mail">
+      <a href="mailto:anton@edelwild-kr%C3%BCger.de" class="btn btn-mail" aria-label="Edelwild per E-Mail kontaktieren">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         E-Mail schreiben
       </a>
     </div>
     <p class="contact-phone reveal">
-      <a href="tel:+491754130040">0175 413 0040</a>
+      <a href="tel:+491754130040" aria-label="Edelwild anrufen: 0175 413 0040">0175 413 0040</a>
     </p>
   </div>
 </section>
@@ -467,6 +611,13 @@
 <!-- FOOTER / IMPRESSUM -->
 <footer id="impressum">
   <p class="footer-wordmark">EDELWILD</p>
+  <ul class="footer-nav">
+    <li><a href="#story">Über uns</a></li>
+    <li><a href="#produkte">Produkte</a></li>
+    <li><a href="#gewuerze">Gewürze</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
   <div class="impressum">
     <strong>Angaben gemäß § 5 TMG</strong><br><br>
     Anton Krüger<br>
