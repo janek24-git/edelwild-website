@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preisliste – Wildfleisch direkt vom Jäger | Edelwild Spessart</title>
+  <meta name="description" content="Aktuelle Preise für Wildfleisch vom Jäger: Rehwild und Schwarzwild, natur und eingelegt. Direkt aus dem Spessart, vakuumiert. Auf Anfrage bei Anton Krüger." />
+  <link rel="canonical" href="https://xn--edelwild-krger-qsb.de/preise.html" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTMKJRY6WF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FTMKJRY6WF');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest:     #141a10;
+      --forest-mid: #1a2014;
+      --gold:       #d4a84b;
+      --gold-light: #e8c472;
+      --gold-dim:   #b8903a;
+      --text:       #ecdcb0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--forest); color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(14,20,9,0.98);
+      border-bottom: 1px solid rgba(212,168,75,0.12);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif; font-size: 1.1rem;
+      letter-spacing: 0.25em; color: var(--gold); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.2em; color: var(--gold-light);
+      text-decoration: none; opacity: 0.85; transition: opacity 0.2s;
+    }
+    .nav-links a:hover, .nav-links a[aria-current] { opacity: 1; }
+    @media (max-width: 600px) { .nav-links { display: none; } }
+
+    /* ── PAGE HEADER ─────────────────────── */
+    .page-header {
+      padding: 9rem 1.5rem 4rem; text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 60%, rgba(212,168,75,0.13) 0%, transparent 65%),
+        var(--forest-mid);
+    }
+    .page-header .label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.38em; color: var(--gold-dim);
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 300; color: var(--gold-light); line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .page-header p {
+      max-width: 520px; margin: 0 auto;
+      font-size: 1.1rem; line-height: 1.8; opacity: 0.7;
+    }
+    .divider { width: 56px; height: 1px; background: var(--gold-dim); margin: 1.5rem auto; }
+
+    /* ── MENU BODY ───────────────────────── */
+    .menu-body { padding: 5rem 1.5rem 6rem; }
+    .container { max-width: 1020px; margin: 0 auto; }
+
+    /* Wild category */
+    .wild-section { margin-bottom: 5rem; }
+    .wild-heading {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .wild-heading .label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.38em; color: var(--gold-dim);
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .wild-heading h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300; color: var(--gold-light); line-height: 1.1;
+    }
+    .wild-heading h2 em { color: var(--gold); font-style: italic; }
+    .wild-divider {
+      width: 80px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+      margin: 1.2rem auto 0;
+    }
+
+    /* Two-column grid */
+    .tables-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    @media (max-width: 720px) {
+      .tables-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* Menu table card */
+    .menu-card {
+      border: 1px solid rgba(212,168,75,0.22);
+      background: rgba(212,168,75,0.02);
+    }
+    .menu-card-header {
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid rgba(212,168,75,0.15);
+      text-align: center;
+    }
+    .menu-card-header h3 {
+      font-family: 'Cinzel', serif; font-size: 0.78rem;
+      letter-spacing: 0.25em; color: var(--gold);
+      text-transform: uppercase;
+    }
+    .menu-card-header .sub {
+      font-size: 0.82rem; color: var(--gold-dim);
+      opacity: 0.65; margin-top: 0.2rem; font-style: italic;
+    }
+    .menu-table { width: 100%; border-collapse: collapse; }
+    .menu-table tr {
+      border-bottom: 1px solid rgba(212,168,75,0.07);
+      transition: background 0.15s;
+    }
+    .menu-table tr:last-child { border-bottom: none; }
+    .menu-table tr:hover { background: rgba(212,168,75,0.04); }
+    .menu-table td {
+      padding: 0.75rem 2rem; font-size: 1.05rem;
+      line-height: 1.5; vertical-align: middle;
+    }
+    .menu-table td:first-child { opacity: 0.88; }
+    .menu-table td:last-child {
+      text-align: right; white-space: nowrap;
+      font-family: 'Cinzel', serif; font-size: 0.78rem;
+      letter-spacing: 0.1em; color: var(--gold);
+    }
+    .menu-table td .note {
+      display: block; font-size: 0.82rem;
+      opacity: 0.55; font-style: italic;
+    }
+
+    /* ── SEPARATOR ───────────────────────── */
+    .section-separator {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(212,168,75,0.2), transparent);
+      margin: 0 0 5rem;
+    }
+
+    /* ── FOOTER CTA ──────────────────────── */
+    .price-footer {
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(212,168,75,0.07) 0%, transparent 65%),
+        var(--forest-mid);
+      padding: 5rem 1.5rem; text-align: center;
+    }
+    .price-footer .label {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.38em; color: var(--gold-dim);
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .price-footer h2 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 300; color: var(--gold-light);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .price-footer h2 em { color: var(--gold); font-style: italic; }
+    .price-note {
+      max-width: 540px; margin: 0 auto 2.5rem;
+      font-size: 1.1rem; line-height: 1.8; opacity: 0.72;
+    }
+    .cta-buttons {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 1rem 2.2rem;
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-decoration: none;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .btn-whatsapp {
+      background: var(--gold); color: var(--forest);
+      border: 1px solid var(--gold);
+    }
+    .btn-whatsapp:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-mail {
+      background: transparent; color: var(--gold-light);
+      border: 1px solid var(--gold-dim);
+    }
+    .btn-mail:hover { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── SITE FOOTER ─────────────────────── */
+    footer {
+      background: #090d06;
+      border-top: 1px solid rgba(212,168,75,0.18);
+      padding: 3rem 1.5rem; text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Cinzel', serif; font-size: 1rem;
+      letter-spacing: 0.32em; color: var(--gold-dim); margin-bottom: 1rem;
+    }
+    .footer-copy {
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      color: var(--gold-dim); opacity: 0.3; font-family: 'Cinzel', serif;
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.85s ease, transform 0.85s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">EDELWILD</a>
+  <ul class="nav-links">
+    <li><a href="/#story">Über uns</a></li>
+    <li><a href="/#produkte">Produkte</a></li>
+    <li><a href="/preise.html" aria-current="page">Preise</a></li>
+    <li><a href="/#kontakt">Kontakt</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#impressum">Impressum</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <p class="label">Direktverkauf vom Jäger</p>
+  <h1>Unsere<br><em>Preisliste</em></h1>
+  <div class="divider"></div>
+  <p>Vakuumiertes Wildfleisch aus dem Spessart — frisch, regional, direkt von Anton Krüger. Alle Preise pro Kilogramm.</p>
+</header>
+
+<main class="menu-body">
+  <div class="container">
+
+    <!-- REHWILD -->
+    <section class="wild-section reveal">
+      <div class="wild-heading">
+        <p class="label">Cervus elaphus capreolus</p>
+        <h2>Reh<em>wild</em></h2>
+        <div class="wild-divider"></div>
+      </div>
+      <div class="tables-grid">
+
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <h3>Natur</h3>
+            <p class="sub">vakuumiert, ungewürzt</p>
+          </div>
+          <table class="menu-table">
+            <tbody>
+              <tr><td>Rücken mit Knochen</td><td>35 €/kg</td></tr>
+              <tr><td>Rücken ohne Knochen</td><td>55 €/kg</td></tr>
+              <tr><td>Filet</td><td>60 €/kg</td></tr>
+              <tr><td>Keule <span class="note">mit Knochen</span></td><td>25 €/kg</td></tr>
+              <tr><td>Keule <span class="note">ohne Knochen</span></td><td>30 €/kg</td></tr>
+              <tr><td>Schulter <span class="note">mit Knochen</span></td><td>20 €/kg</td></tr>
+              <tr><td>Schulter <span class="note">ohne Knochen</span></td><td>25 €/kg</td></tr>
+              <tr><td>Nacken</td><td>28 €/kg</td></tr>
+              <tr><td>Rippen / Leiterchen</td><td>18 €/kg</td></tr>
+              <tr><td>Gulasch</td><td>25 €/kg</td></tr>
+              <tr><td>Hackfleisch</td><td>18 €/kg</td></tr>
+              <tr><td>Bratenstücke</td><td>30 €/kg</td></tr>
+              <tr><td>Innereien <span class="note">Leber, Herz, Nieren</span></td><td>12 €/kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <h3>Eingelegt &amp; Gewürzt</h3>
+            <p class="sub">mariniert, versandfertig</p>
+          </div>
+          <table class="menu-table">
+            <tbody>
+              <tr><td>Rückensteak</td><td>55 €/kg</td></tr>
+              <tr><td>Filet</td><td>65 €/kg</td></tr>
+              <tr><td>Keulensteak</td><td>38 €/kg</td></tr>
+              <tr><td>Schultersteak</td><td>32 €/kg</td></tr>
+              <tr><td>Nackensteak</td><td>35 €/kg</td></tr>
+              <tr><td>Rippen / Leiterchen</td><td>22 €/kg</td></tr>
+              <tr><td>Gulasch <span class="note">gewürzt &amp; eingelegt</span></td><td>28 €/kg</td></tr>
+              <tr><td>Hackfleisch <span class="note">z. B. für Burger</span></td><td>22 €/kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-separator"></div>
+
+    <!-- SCHWARZWILD -->
+    <section class="wild-section reveal">
+      <div class="wild-heading">
+        <p class="label">Sus scrofa</p>
+        <h2>Schwarz<em>wild</em></h2>
+        <div class="wild-divider"></div>
+      </div>
+      <div class="tables-grid">
+
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <h3>Natur</h3>
+            <p class="sub">vakuumiert, ungewürzt</p>
+          </div>
+          <table class="menu-table">
+            <tbody>
+              <tr><td>Rücken mit Knochen</td><td>30 €/kg</td></tr>
+              <tr><td>Rücken ohne Knochen</td><td>45 €/kg</td></tr>
+              <tr><td>Filet</td><td>55 €/kg</td></tr>
+              <tr><td>Keule <span class="note">mit Knochen</span></td><td>22 €/kg</td></tr>
+              <tr><td>Keule <span class="note">ohne Knochen</span></td><td>28 €/kg</td></tr>
+              <tr><td>Schulter <span class="note">mit Knochen</span></td><td>18 €/kg</td></tr>
+              <tr><td>Schulter <span class="note">ohne Knochen</span></td><td>22 €/kg</td></tr>
+              <tr><td>Nacken</td><td>25 €/kg</td></tr>
+              <tr><td>Rippen / Leiterchen</td><td>15 €/kg</td></tr>
+              <tr><td>Gulasch</td><td>22 €/kg</td></tr>
+              <tr><td>Hackfleisch</td><td>15 €/kg</td></tr>
+              <tr><td>Bratenstücke</td><td>28 €/kg</td></tr>
+              <tr><td>Innereien <span class="note">Leber, Herz, Nieren</span></td><td>12 €/kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="menu-card">
+          <div class="menu-card-header">
+            <h3>Eingelegt &amp; Gewürzt</h3>
+            <p class="sub">mariniert, versandfertig</p>
+          </div>
+          <table class="menu-table">
+            <tbody>
+              <tr><td>Rückensteak</td><td>50 €/kg</td></tr>
+              <tr><td>Filet</td><td>60 €/kg</td></tr>
+              <tr><td>Keulensteak</td><td>35 €/kg</td></tr>
+              <tr><td>Schultersteak</td><td>30 €/kg</td></tr>
+              <tr><td>Nackensteak</td><td>32 €/kg</td></tr>
+              <tr><td>Rippen / Leiterchen</td><td>20 €/kg</td></tr>
+              <tr><td>Gulasch <span class="note">gewürzt &amp; eingelegt</span></td><td>25 €/kg</td></tr>
+              <tr><td>Hackfleisch <span class="note">z. B. für Burger</span></td><td>20 €/kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="price-footer">
+  <div class="container">
+    <p class="label">Direktkauf</p>
+    <h2>Jetzt anfragen<br><em>oder bestellen</em></h2>
+    <p class="price-note">Alle Preise pro kg. Saisonales Angebot — Verfügbarkeit auf Anfrage.<br>Anton antwortet persönlich.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/491754130040" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:anton@edelwild-kr%C3%BCger.de" class="btn btn-mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        E-Mail schreiben
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-wordmark">EDELWILD</p>
+  <p class="footer-copy">EDELWILD · NATUR IN JEDEM BISSEN · SPESSART</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
