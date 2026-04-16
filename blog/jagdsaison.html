@@ -69,7 +69,31 @@
       text-decoration: none; opacity: 0.85; transition: opacity 0.2s;
     }
     .nav-links a:hover { opacity: 1; }
-    @media (max-width: 600px) { .nav-links { display: none; } }
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none;
+      padding: 0.5rem; z-index: 101;
+    }
+    .nav-burger span {
+      display: block; width: 24px; height: 1px;
+      background: var(--gold);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(9,13,6,0.98);
+        justify-content: center; align-items: center;
+        gap: 2.5rem; z-index: 99;
+      }
+      .nav-links.open a { font-size: 1.1rem; letter-spacing: 0.25em; }
+    }
 
     .article-hero {
       padding: 10rem 1.5rem 4rem; text-align: center;
@@ -197,6 +221,9 @@
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/#kontakt">Kontakt</a></li>
   </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <header class="article-hero">
@@ -308,5 +335,23 @@
   <p class="footer-copy">EDELWILD · NATUR IN JEDEM BISSEN · SPESSART</p>
 </footer>
 
+<script>
+  const burger = document.getElementById('nav-burger');
+  const navLinks = document.querySelector('.nav-links');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      burger.setAttribute('aria-label', navLinks.classList.contains('open') ? 'Menü schließen' : 'Menü öffnen');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+        burger.setAttribute('aria-label', 'Menü öffnen');
+      });
+    });
+  }
+</script>
 </body>
 </html>
