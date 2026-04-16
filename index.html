@@ -240,17 +240,6 @@
       background-size: cover; background-position: center;
       position: relative; overflow: hidden;
     }
-    .story-photo::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(20,26,16,0.5) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .story-photo-label {
-      position: absolute; bottom: 1rem; left: 1rem;
-      font-family: 'Cinzel', serif; font-size: 0.52rem;
-      letter-spacing: 0.25em; color: var(--gold-dim);
-      opacity: 0.5; z-index: 1;
-    }
     .story-text p {
       font-size: 1.15rem; line-height: 1.9;
       color: var(--text); opacity: 0.88;
@@ -283,14 +272,6 @@
       background: linear-gradient(135deg, #1e2c20, #172219);
       background-size: cover; background-position: center;
       position: relative; overflow: hidden;
-    }
-    .product-photo-label {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 0.5rem 0.75rem;
-      font-family: 'Cinzel', serif; font-size: 0.52rem;
-      letter-spacing: 0.18em; color: var(--gold-dim);
-      background: linear-gradient(to top, rgba(20,26,16,0.75), transparent);
-      text-align: center; opacity: 0.6;
     }
     .product-body { padding: 1.5rem 1.5rem 2rem; text-align: left; }
     .product-name {
@@ -463,7 +444,6 @@
   <div class="container">
     <div class="story-grid reveal">
       <div class="story-photo" data-src="images/mood_spessart.png" role="img" aria-label="Spessart Wald – Jagdrevier von Anton Krüger aus Hösbach">
-        <span class="story-photo-label">SPESSART · ANTON KRÜGER</span>
       </div>
       <div class="story-text">
         <p class="section-label">Unsere Geschichte</p>
@@ -488,7 +468,6 @@
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
         <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Rehfleisch vakuumiert vom Jäger aus dem Spessart – Rücken, Keule, Gulasch">
-          <div class="product-photo-label">VAKUUMIERT · PORTIONIERT</div>
         </div>
         <div class="product-body">
           <h3 class="product-name" itemprop="name">REHFLEISCH</h3>
@@ -498,7 +477,6 @@
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
         <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Wildschwein aus dem Spessart – vakuumiert, Schulter, Keule und Bratwurst">
-          <div class="product-photo-label">SPESSART · SAISONAL</div>
         </div>
         <div class="product-body">
           <h3 class="product-name" itemprop="name">WILDSCHWEIN</h3>
@@ -508,7 +486,6 @@
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
         <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Hirschfleisch Premiumqualität aus dem Spessart – Rücken und Keule vakuumiert">
-          <div class="product-photo-label">PREMIUM · SPESSART</div>
         </div>
         <div class="product-body">
           <h3 class="product-name" itemprop="name">HIRSCH</h3>
@@ -531,7 +508,6 @@
 
       <article class="product-card reveal">
         <div class="product-photo" data-src="images/freepik_flat-lay-of-wild-game-spi_2802264479.png" role="img" aria-label="Wildgewürzmischung Spessart mit Wacholderbeeren, Lorbeer, Rosmarin und Thymian">
-          <div class="product-photo-label">KLASSISCH · AROMATISCH</div>
         </div>
         <div class="product-body">
           <h3 class="product-name">WILDGEWÜRZ SPESSART</h3>
@@ -541,7 +517,6 @@
 
       <article class="product-card reveal">
         <div class="product-photo" data-src="images/freepik_dark-red-wine-marinade-in_2802268952.png" role="img" aria-label="Wildmarinade Dunkel auf Rotweinnbasis, ideal für Wildschwein">
-          <div class="product-photo-label">ROTWEIN · TIEFGRÜNDIG</div>
         </div>
         <div class="product-body">
           <h3 class="product-name">WILDMARINADE DUNKEL</h3>
@@ -551,7 +526,6 @@
 
       <article class="product-card reveal">
         <div class="product-photo" data-src="images/freepik_coarse-sea-salt-with-moun_2802274522.png" role="img" aria-label="Kräutersalz Wild mit Meersalz, Bergkräutern und Knoblauch">
-          <div class="product-photo-label">MEERSALZ · BERGKRÄUTER</div>
         </div>
         <div class="product-body">
           <h3 class="product-name">KRÄUTERSALZ WILD</h3>
