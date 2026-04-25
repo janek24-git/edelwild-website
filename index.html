@@ -63,7 +63,7 @@
       {
         "@type": "Product",
         "name": "Wildschwein aus dem Spessart",
-        "description": "Intensiv im Geschmack, natürlich aufgewachsen. Schulter, Keule, Bratwurst – je nach Saison.",
+        "description": "Intensiv im Geschmack, natürlich aufgewachsen. Schulter und Keule – je nach Saison.",
         "brand": { "@type": "Brand", "name": "Edelwild" },
         "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
       },
@@ -298,6 +298,8 @@
       position: relative; overflow: hidden;
     }
     .product-body { padding: 1.5rem 1.5rem 2rem; text-align: left; }
+    .product-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .product-btns .btn { margin-top: 0; }
     .product-name {
       font-family: 'Cinzel', serif;
       font-size: 0.85rem; letter-spacing: 0.15em;
@@ -496,32 +498,41 @@
     <div class="product-grid">
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Rehfleisch vakuumiert vom Jäger aus dem Spessart – Rücken, Keule, Gulasch">
+        <div class="product-photo" data-src="images/rehwild.jpg" role="img" aria-label="Rehfleisch vakuumiert vom Jäger aus dem Spessart – Rücken, Keule, Gulasch">
         </div>
         <div class="product-body">
           <h3 class="product-name" itemprop="name">REHFLEISCH</h3>
           <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken, Keule und Gulasch — vakuumiert und versandfertig.</p>
-          <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rehfleisch%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+          <div class="product-btns">
+            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rehfleisch%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
+          </div>
         </div>
       </article>
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Wildschwein aus dem Spessart – vakuumiert, Schulter, Keule und Bratwurst">
+        <div class="product-photo" data-src="images/schwarzwild.jpg" role="img" aria-label="Wildschwein aus dem Spessart – vakuumiert, Schulter und Keule">
         </div>
         <div class="product-body">
           <h3 class="product-name" itemprop="name">WILDSCHWEIN</h3>
-          <p class="product-desc" itemprop="description">Intensiv im Geschmack, natürlich aufgewachsen. Schulter, Keule, Bratwurst — je nach Saison.</p>
-          <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Wildschwein%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+          <p class="product-desc" itemprop="description">Intensiv im Geschmack, natürlich aufgewachsen. Schulter und Keule — je nach Saison.</p>
+          <div class="product-btns">
+            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Wildschwein%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
+          </div>
         </div>
       </article>
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-photo" data-src="images/vakuum.webp" role="img" aria-label="Hirschfleisch Premiumqualität aus dem Spessart – Rücken und Keule vakuumiert">
+        <div class="product-photo" data-src="images/rotwild.jpg" role="img" aria-label="Hirschfleisch Premiumqualität aus dem Spessart – Rücken und Keule vakuumiert">
         </div>
         <div class="product-body">
           <h3 class="product-name" itemprop="name">HIRSCH</h3>
           <p class="product-desc" itemprop="description">Edel und kräftig. Rücken und Keule in Premiumqualität — direkt aus dem Spessart.</p>
-          <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Hirschfleisch%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+          <div class="product-btns">
+            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Hirschfleisch%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
+          </div>
         </div>
       </article>
 
