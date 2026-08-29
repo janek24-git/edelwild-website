@@ -56,7 +56,7 @@
       {
         "@type": "Product",
         "name": "Rehfleisch vakuumiert",
-        "description": "Zart, mager, aromatisch. Rücken, Keule und Gulasch – vakuumiert und versandfertig aus dem Spessart.",
+        "description": "Zart, mager, aromatisch. Rücken, Keule und Gulasch – vakuumiert, aus eigener Wildkammer im Spessart.",
         "brand": { "@type": "Brand", "name": "Edelwild" },
         "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
       },
@@ -263,6 +263,8 @@
       background: linear-gradient(135deg, #1e2c20, #172219);
       background-size: cover; background-position: center;
       position: relative; overflow: hidden;
+      mask-image: radial-gradient(ellipse 88% 88% at center, #000 60%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 88% 88% at center, #000 60%, transparent 100%);
     }
     .story-text p {
       font-size: 1.15rem; line-height: 1.9;
@@ -382,10 +384,6 @@
       .feinschmecker-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .feinschmecker-grid .story-photo { order: -1; }
     }
-    .feinschmecker-note {
-      font-size: 0.85rem; opacity: 0.5; font-style: italic; margin-top: 1.5rem;
-    }
-
     /* ── KONTAKT ──────────────────────────── */
     #kontakt {
       background:
@@ -553,13 +551,13 @@
     <p class="section-label reveal">Angebot</p>
     <h2 class="section-title reveal">Wildfleisch,<br><em>vakuumfrisch</em></h2>
     <div class="divider center reveal"></div>
-    <p class="products-intro reveal">Direkt vom Jäger — vakuumiert, portioniert, versandfertig.<br>Saisonal verfügbar, solange der Vorrat reicht.</p>
+    <p class="products-intro reveal">Direkt vom Jäger — vakuumiert und portioniert in unserer eigenen Wildkammer, persönlich vorbeigebracht im Umkreis.<br>Saisonal verfügbar, solange der Vorrat reicht.</p>
     <div class="product-grid">
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
         <div class="product-body no-photo">
           <h3 class="product-name" itemprop="name">REHFLEISCH</h3>
-          <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken, Keule und Gulasch — vakuumiert und versandfertig.</p>
+          <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken, Keule und Gulasch — vakuumiert, aus eigener Wildkammer.</p>
           <div class="product-btns">
             <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rehfleisch%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
@@ -652,8 +650,7 @@
         <p class="section-label">Für Feinschmecker</p>
         <h2 class="section-title">Wild trifft<br><em>Genuss</em></h2>
         <div class="divider"></div>
-        <p>Aus unseren edlen Stücken lassen sich wunderbare Gerichte zaubern — wie hier ein deftiges Wildschweinsteak (Nackensteak) mit Kräuterbutter.</p>
-        <p class="feinschmecker-note">Symbolische Darstellung.</p>
+        <p>Aus unseren edlen Stücken lassen sich wunderbare Gerichte zaubern — wie hier ein deftiges Wildschwein-Nackensteak mit Kräuterbutter.</p>
       </div>
       <div class="story-photo" data-src="images/feinschmecker-steak.jpg" role="img" aria-label="Wildschweinsteak mit Kräuterbutter – Zubereitungsidee"></div>
     </div>
