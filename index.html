@@ -368,6 +368,24 @@
       background: linear-gradient(to top, rgba(14,20,9,0.55) 0%, transparent 60%);
     }
 
+    /* ── FEINSCHMECKER ─────────────────────── */
+    #feinschmecker {
+      background:
+        radial-gradient(ellipse at 0% 50%, rgba(212,168,75,0.06) 0%, transparent 60%),
+        var(--forest-mid);
+    }
+    .feinschmecker-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    @media (max-width: 700px) {
+      .feinschmecker-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .feinschmecker-grid .story-photo { order: -1; }
+    }
+    .feinschmecker-note {
+      font-size: 0.85rem; opacity: 0.5; font-style: italic; margin-top: 1.5rem;
+    }
+
     /* ── KONTAKT ──────────────────────────── */
     #kontakt {
       background:
@@ -625,6 +643,22 @@
     <div class="mood-overlay"></div>
   </div>
 </div>
+
+<!-- FÜR FEINSCHMECKER -->
+<section id="feinschmecker">
+  <div class="container">
+    <div class="feinschmecker-grid reveal">
+      <div class="story-text">
+        <p class="section-label">Für Feinschmecker</p>
+        <h2 class="section-title">Wild trifft<br><em>Genuss</em></h2>
+        <div class="divider"></div>
+        <p>Aus unseren edlen Stücken lassen sich wunderbare Gerichte zaubern — wie hier ein deftiges Wildschweinsteak (Nackensteak) mit Kräuterbutter.</p>
+        <p class="feinschmecker-note">Symbolische Darstellung.</p>
+      </div>
+      <div class="story-photo" data-src="images/feinschmecker-steak.jpg" role="img" aria-label="Wildschweinsteak mit Kräuterbutter – Zubereitungsidee"></div>
+    </div>
+  </div>
+</section>
 
 <!-- KONTAKT -->
 <section id="kontakt">
