@@ -322,6 +322,7 @@
       position: relative; overflow: hidden;
     }
     .product-body { padding: 1.5rem 1.5rem 2rem; text-align: left; }
+    .product-body.no-photo { padding-top: 2.2rem; }
     .product-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
     .product-btns .btn { margin-top: 0; }
     .product-name {
@@ -351,20 +352,17 @@
     /* ── MOOD STRIP ───────────────────────── */
     #mood {
       padding: 0; display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       height: 300px;
     }
     @media (max-width: 600px) {
-      #mood { grid-template-columns: 1fr; height: auto; }
-      .mood-panel { height: 200px; }
+      #mood { height: 220px; }
     }
     .mood-panel {
       background: #0f1408;
       background-size: cover; background-position: center;
       position: relative; overflow: hidden;
     }
-    .mood-panel:nth-child(2) { background-color: #0d1206; }
-    .mood-panel:nth-child(3) { background-color: #111507; }
     .mood-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(14,20,9,0.55) 0%, transparent 60%);
@@ -499,7 +497,7 @@
 <section id="story">
   <div class="container">
     <div class="story-grid reveal">
-      <div class="story-photo" data-src="images/mood_spessart.png" role="img" aria-label="Spessart Wald – Jagdrevier von Anton Krüger aus Hösbach">
+      <div class="story-photo" data-src="images/waldweg-spessart.jpg" role="img" aria-label="Waldweg im Spessart – Jagdrevier von Anton Krüger aus Hösbach">
       </div>
       <div class="story-text">
         <p class="section-label">Unsere Geschichte</p>
@@ -541,9 +539,7 @@
     <div class="product-grid">
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-photo" data-src="images/rehwild.jpg" role="img" aria-label="Rehfleisch vakuumiert vom Jäger aus dem Spessart – Rücken, Keule, Gulasch">
-        </div>
-        <div class="product-body">
+        <div class="product-body no-photo">
           <h3 class="product-name" itemprop="name">REHFLEISCH</h3>
           <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken, Keule und Gulasch — vakuumiert und versandfertig.</p>
           <div class="product-btns">
@@ -554,9 +550,7 @@
       </article>
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-photo" data-src="images/schwarzwild.jpg" role="img" aria-label="Wildschwein aus dem Spessart – vakuumiert, Schulter und Keule">
-        </div>
-        <div class="product-body">
+        <div class="product-body no-photo">
           <h3 class="product-name" itemprop="name">WILDSCHWEIN</h3>
           <p class="product-desc" itemprop="description">Intensiv im Geschmack, natürlich aufgewachsen. Schulter und Keule — je nach Saison.</p>
           <div class="product-btns">
@@ -567,9 +561,7 @@
       </article>
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-photo" data-src="images/rotwild.jpg" role="img" aria-label="Hirschfleisch Premiumqualität aus dem Spessart – Rücken und Keule vakuumiert">
-        </div>
-        <div class="product-body">
+        <div class="product-body no-photo">
           <h3 class="product-name" itemprop="name">HIRSCH</h3>
           <p class="product-desc" itemprop="description">Edel und kräftig. Rücken und Keule in Premiumqualität — direkt aus dem Spessart.</p>
           <div class="product-btns">
@@ -629,13 +621,7 @@
 
 <!-- MOOD STRIP -->
 <div id="mood" aria-hidden="true">
-  <div class="mood-panel" data-src="images/mood_spessart.png">
-    <div class="mood-overlay"></div>
-  </div>
   <div class="mood-panel" data-src="images/mood_spessart2.png">
-    <div class="mood-overlay"></div>
-  </div>
-  <div class="mood-panel" data-src="images/hirsch.png">
     <div class="mood-overlay"></div>
   </div>
 </div>
