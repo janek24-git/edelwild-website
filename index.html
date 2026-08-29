@@ -271,6 +271,30 @@
     }
     .story-text p em { color: var(--gold-light); font-style: italic; }
 
+    /* ── HANDARBEIT ───────────────────────── */
+    #handarbeit { background: var(--forest); text-align: center; }
+    .handarbeit-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 1rem;
+    }
+    @media (max-width: 700px) {
+      .handarbeit-grid { grid-template-columns: 1fr; }
+    }
+    .handarbeit-photo {
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1e2c20, #172219);
+      background-size: cover; background-position: center;
+      position: relative; overflow: hidden;
+    }
+    .handarbeit-photo .caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.2rem;
+      background: linear-gradient(to top, rgba(10,14,7,0.85), transparent);
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.18em; color: var(--gold-light);
+      text-transform: uppercase; text-align: left;
+    }
+
     /* ── PRODUKTE ─────────────────────────── */
     #produkte { background: var(--forest); text-align: center; }
     .products-intro {
@@ -447,6 +471,7 @@
     <li><a href="/#produkte">Produkte</a></li>
     <li><a href="/#gewuerze">Gewürze</a></li>
     <li><a href="/preise.html">Preise</a></li>
+    <li><a href="/geschaeftskunden.html">Geschäftskunden</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/#kontakt">Kontakt</a></li>
   </ul>
@@ -458,7 +483,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-photo" data-src="images/hirsch.png" role="img" aria-label="Hirsch im Spessart – Edelwild Wildfleisch aus Hösbach bei Aschaffenburg"></div>
+  <div class="hero-photo" data-src="images/hirsch-hero.jpg" role="img" aria-label="Hirsch im Spessart – Edelwild Wildfleisch aus Hösbach bei Aschaffenburg"></div>
   <div class="hero-content">
     <h1 class="hero-wordmark">EDELWILD</h1>
     <p class="hero-tagline">Natur in jedem Bissen</p>
@@ -483,6 +508,24 @@
         <p>Anton Krüger jagt im Spessart — einem der größten zusammenhängenden Waldgebiete Deutschlands. Was hier entsteht, ist kein Produkt. Es ist das Ergebnis von Respekt vor der Natur, handwerklichem Können und konsequenter Qualität.</p>
         <p>Kein Mastbetrieb. Kein Stress. Kein weiter Weg. Das Wild lebt frei, wird nachhaltig entnommen und <em>vakuumfrisch direkt zu Ihnen</em> gebracht.</p>
         <p>Saisonales Angebot. Ehrliche Herkunft. Spessart pur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HANDARBEIT -->
+<section id="handarbeit">
+  <div class="container">
+    <p class="section-label reveal">Tradition</p>
+    <h2 class="section-title reveal">Echte<br><em>Handarbeit</em></h2>
+    <div class="divider center reveal"></div>
+    <p class="products-intro reveal">Zerlegt und pariert von Hand — kein Fließband, keine Massenware. Das Handwerk der Wildverarbeitung wird im Spessart seit Generationen weitergegeben, bis heute genauso sorgfältig wie damals.</p>
+    <div class="handarbeit-grid reveal">
+      <div class="handarbeit-photo" data-src="images/handarbeit-schnitt.jpg" role="img" aria-label="Handwerkliche Zerlegung von Wildfleisch aus dem Spessart">
+        <span class="caption">Frisch zerlegt, von Hand</span>
+      </div>
+      <div class="handarbeit-photo" data-src="images/handarbeit-historisch.jpg" role="img" aria-label="Historische Aufnahme der Wildverarbeitung – Tradition seit Generationen">
+        <span class="caption">Tradition seit Generationen</span>
       </div>
     </div>
   </div>

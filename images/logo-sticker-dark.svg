@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="50mm" height="50mm">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;display=swap');</style>
+    <path id="topArc"    d="M 60,250 A 190,190 0 0,1 440,250"/>
+    <path id="bottomArc" d="M 430,265 A 190,190 0 0,1 70,265"/>
+  </defs>
+
+  <!-- Hintergrund -->
+  <circle cx="250" cy="250" r="248" fill="#141a10"/>
+  <!-- Äußerer Goldring -->
+  <circle cx="250" cy="250" r="246" fill="none" stroke="#d4a84b" stroke-width="4"/>
+  <!-- Innerer Goldring -->
+  <circle cx="250" cy="250" r="230" fill="none" stroke="#d4a84b" stroke-width="1"/>
+
+  <!-- Oberer Bogentext -->
+  <text font-family="Cinzel, Georgia, serif" font-size="22" fill="#d4a84b" letter-spacing="7" opacity="0.75">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">DIREKTVERKAUF VOM JÄGER</textPath>
+  </text>
+
+  <!-- Ornament oben -->
+  <polygon points="250,160 257,172 250,184 243,172" fill="#d4a84b" opacity="0.9"/>
+
+  <!-- Trennlinie oben -->
+  <line x1="108" y1="206" x2="392" y2="206" stroke="#d4a84b" stroke-width="1" opacity="0.45"/>
+
+  <!-- EDELWILD Hauptschrift -->
+  <text x="250" y="274" font-family="Cinzel, Georgia, serif" font-size="74" font-weight="600"
+        fill="#d4a84b" text-anchor="middle" letter-spacing="9">EDELWILD</text>
+
+  <!-- Trennlinie unten -->
+  <line x1="108" y1="294" x2="392" y2="294" stroke="#d4a84b" stroke-width="1" opacity="0.45"/>
+
+  <!-- Unterer Bogentext -->
+  <text font-family="Cinzel, Georgia, serif" font-size="22" fill="#d4a84b" letter-spacing="7" opacity="0.75">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">SPESSART</textPath>
+  </text>
+</svg>
