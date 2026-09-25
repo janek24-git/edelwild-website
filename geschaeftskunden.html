@@ -104,6 +104,32 @@
       font-size: 1.1rem; line-height: 1.8; opacity: 0.7;
     }
     .divider { width: 56px; height: 1px; background: var(--gold-dim); margin: 1.5rem auto; }
+    .header-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 1rem 2.4rem; margin-top: 2.2rem;
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-decoration: none;
+      background: var(--gold); color: var(--forest);
+      border: 1px solid var(--gold);
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .header-cta:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .header-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .badges-row {
+      display: flex; flex-wrap: wrap; gap: 0.7rem;
+      justify-content: center; margin-top: 2rem;
+    }
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(212,168,75,0.3);
+      background: rgba(212,168,75,0.03);
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold-light); text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    a.badge:hover { border-color: var(--gold); color: var(--gold); }
 
     /* ── INTRO GRID (Bild + Text) ─────────── */
     .intro-body { padding: 5rem 1.5rem; }
@@ -135,7 +161,7 @@
 
     /* ── VORTEILE ─────────────────────────── */
     .benefits-section { padding: 0 1.5rem 6rem; text-align: center; }
-    .benefits-section .label {
+    .benefits-section .label, .process-section .label {
       font-family: 'Cinzel', serif; font-size: 0.62rem;
       letter-spacing: 0.38em; color: var(--gold-dim);
       text-transform: uppercase; margin-bottom: 0.6rem;
@@ -157,7 +183,39 @@
       border: 1px solid rgba(212,168,75,0.22);
       background: rgba(212,168,75,0.02);
       padding: 2rem 1.8rem;
+      transition: border-color 0.3s, transform 0.3s;
     }
+    .benefit-card:hover {
+      border-color: rgba(212,168,75,0.55);
+      transform: translateY(-4px);
+    }
+
+    /* ── ABLAUF ───────────────────────────── */
+    .process-section { padding: 0 1.5rem 6rem; text-align: center; }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; text-align: left; counter-reset: step;
+    }
+    @media (max-width: 760px) {
+      .process-grid { grid-template-columns: 1fr; }
+    }
+    .process-step {
+      position: relative; padding: 2rem 1.8rem 2rem 3.6rem;
+      border: 1px solid rgba(212,168,75,0.22);
+      background: rgba(212,168,75,0.02);
+    }
+    .process-step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; top: 1.8rem; left: 1.6rem;
+      font-family: 'Cinzel', serif; font-size: 1.1rem;
+      color: var(--gold);
+    }
+    .process-step h3 {
+      font-family: 'Cinzel', serif; font-size: 0.78rem;
+      letter-spacing: 0.2em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .process-step p { font-size: 1.02rem; line-height: 1.7; opacity: 0.8; }
     .benefit-card h3 {
       font-family: 'Cinzel', serif; font-size: 0.78rem;
       letter-spacing: 0.2em; color: var(--gold);
@@ -254,6 +312,16 @@
   <h1>Wild für Ihre<br><em>Speisekarte</em></h1>
   <div class="divider"></div>
   <p>Wir beliefern Gastronomiebetriebe im Spessart und Umgebung mit Wildfleisch in Premiumqualität — direkt vom Jäger, ohne Umwege.</p>
+  <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20wir%20sind%20an%20einer%20Wildfleisch-Belieferung%20f%C3%BCr%20unsere%20Gastronomie%20interessiert." target="_blank" rel="noopener noreferrer" class="header-cta">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Jetzt anfragen
+  </a>
+  <div class="badges-row">
+    <a href="/blog/eu-wildkammer.html" class="badge">EU-zertifizierte Wildkammer</a>
+    <span class="badge">Aus eigener Jagd</span>
+    <span class="badge">Persönliche Belieferung</span>
+    <span class="badge">Keine Zwischenhändler</span>
+  </div>
 </header>
 
 <main class="intro-body">
@@ -262,12 +330,35 @@
       <div class="intro-photo" data-src="images/gastronomie-teller.jpg" role="img" aria-label="Angerichteter Teller mit Wildfleisch aus dem Spessart – Rehrücken in Gastronomiequalität"></div>
       <div class="intro-text">
         <p class="section-label" style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.38em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:0.8rem;">Regional. Persönlich. Nachhaltig.</p>
-        <p>Unser Wildfleisch stammt ausschließlich aus eigener Jagd im Spessart — Anton Krüger erlegt, verarbeitet und liefert jedes Stück persönlich. Kein Zukauf, keine Zwischenhändler. Dabei legen wir besonderen Wert auf kurze Wege, eine sorgfältige Verarbeitung in unserer eigenen EU-zertifizierten Wildkammer und höchste Qualität.</p>
+        <p>Unser Wildfleisch stammt ausschließlich aus eigener Jagd im Spessart — Anton erlegt, verarbeitet und liefert jedes Stück persönlich. Kein Zukauf, keine Zwischenhändler. Dabei legen wir besonderen Wert auf kurze Wege, eine sorgfältige Verarbeitung in unserer eigenen EU-zertifizierten Wildkammer und höchste Qualität.</p>
         <p>Das Ergebnis: <em>zartes, aromatisches Fleisch</em> in gleichbleibender Qualität, wie es Ihre Gäste auf dem Teller sehen und schmecken wollen.</p>
         <p>Rehrücken, Rotwildkeule, Schwarzwild-Schulter, Damwildrücken — ganz nach Bedarf Ihrer Küche, saisonal verfügbar.</p>
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="section-separator"></div>
+  </div>
+
+  <section class="process-section">
+    <p class="label reveal">So einfach geht's</p>
+    <h2 class="reveal" style="font-size:clamp(2rem, 5vw, 3rem);font-weight:300;color:var(--gold-light);line-height:1.1;margin-bottom:3rem;">Von der Anfrage<br><em style="color:var(--gold);font-style:italic;">zur Lieferung</em></h2>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <h3>Anfrage</h3>
+        <p>Kurze Nachricht per WhatsApp oder Mail — mit Wunschmenge und gewünschten Zuschnitten.</p>
+      </div>
+      <div class="process-step reveal">
+        <h3>Individuelles Angebot</h3>
+        <p>Anton meldet sich persönlich mit Preis und Verfügbarkeit, abgestimmt auf Menge und Lieferrhythmus.</p>
+      </div>
+      <div class="process-step reveal">
+        <h3>Persönliche Lieferung</h3>
+        <p>Vakuumiert aus der eigenen Wildkammer, von Anton selbst gebracht — kurze Wege, direkter Kontakt.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="container">
     <div class="section-separator"></div>
@@ -283,7 +374,7 @@
       </div>
       <div class="benefit-card reveal">
         <h3>Persönliche Belieferung</h3>
-        <p>Anton Krüger liefert selbst, nach Absprache und Bedarf — kurze Wege, direkter Kontakt, keine Zwischenhändler.</p>
+        <p>Anton liefert selbst, nach Absprache und Bedarf — kurze Wege, direkter Kontakt, keine Zwischenhändler.</p>
       </div>
       <div class="benefit-card reveal">
         <h3>Preise auf Anfrage</h3>
