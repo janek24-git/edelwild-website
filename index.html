@@ -353,7 +353,9 @@
       font-family: 'Cinzel', serif; font-size: 0.6rem;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--gold-light);
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
     }
+    a.badge:hover { border-color: var(--gold); color: var(--gold); }
 
     /* ── GEWÜRZE ──────────────────────────── */
     #gewuerze {
@@ -622,7 +624,7 @@
     </div>
 
     <div class="badges-row reveal">
-      <span class="badge">EU-zertifizierte Wildkammer</span>
+      <a href="/blog/eu-wildkammer.html" class="badge">EU-zertifizierte Wildkammer</a>
       <span class="badge">Aus eigener Jagd</span>
       <span class="badge">Regional · Spessart</span>
       <span class="badge">Vakuumfrisch verarbeitet</span>
