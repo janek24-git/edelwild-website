@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Edelwild – Wildfleisch direkt vom Jäger | Spessart, Aschaffenburg, Hösbach</title>
-  <meta name="description" content="Frisches Wildfleisch direkt vom Jäger aus dem Spessart. Reh, Hirsch und Wildschwein – vakuumiert, regional aus Hösbach bei Aschaffenburg. Jetzt bestellen." />
-  <meta name="keywords" content="Wildfleisch kaufen, Wildfleisch Spessart, Rehfleisch direkt vom Jäger, Wildschwein Aschaffenburg, Hirschfleisch Hösbach, Wildfleisch vakuumiert, Direktverkauf Wild" />
+  <meta name="description" content="Frisches Wildfleisch direkt vom Jäger aus dem Spessart. Rehwild, Rotwild, Damwild und Schwarzwild – vakuumiert, regional aus Hösbach bei Aschaffenburg. Jetzt bestellen." />
+  <meta name="keywords" content="Wildfleisch kaufen, Wildfleisch Spessart, Rehwild direkt vom Jäger, Schwarzwild Aschaffenburg, Rotwild Hösbach, Damwild Spessart, Wildfleisch vakuumiert, Direktverkauf Wild" />
   <link rel="canonical" href="https://edelwild-krueger.de/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://edelwild-krueger.de/" />
   <meta property="og:title" content="Edelwild – Wildfleisch direkt vom Jäger | Spessart" />
-  <meta property="og:description" content="Frisches Wildfleisch direkt vom Jäger aus dem Spessart. Reh, Hirsch und Wildschwein – vakuumiert, regional aus Hösbach bei Aschaffenburg." />
+  <meta property="og:description" content="Frisches Wildfleisch direkt vom Jäger aus dem Spessart. Rehwild, Rotwild, Damwild und Schwarzwild – vakuumiert, regional aus Hösbach bei Aschaffenburg." />
   <meta property="og:image" content="https://edelwild-krueger.de/images/hirsch.png" />
   <meta property="og:locale" content="de_DE" />
   <meta property="og:site_name" content="Edelwild" />
@@ -21,7 +21,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Edelwild – Wildfleisch direkt vom Jäger | Spessart" />
-  <meta name="twitter:description" content="Reh, Hirsch und Wildschwein – vakuumiert, regional aus Hösbach bei Aschaffenburg." />
+  <meta name="twitter:description" content="Rehwild, Rotwild, Damwild und Schwarzwild – vakuumiert, regional aus Hösbach bei Aschaffenburg." />
   <meta name="twitter:image" content="https://edelwild-krueger.de/images/hirsch.png" />
 
   <!-- JSON-LD: LocalBusiness + Produkte -->
@@ -55,22 +55,29 @@
       },
       {
         "@type": "Product",
-        "name": "Rehfleisch vakuumiert",
-        "description": "Zart, mager, aromatisch. Rücken, Keule und Gulasch – vakuumiert, aus eigener Wildkammer im Spessart.",
+        "name": "Rehwild vakuumiert",
+        "description": "Zart, mager, aromatisch. Rücken und Keule – vakuumiert, aus eigener Wildkammer im Spessart.",
         "brand": { "@type": "Brand", "name": "Edelwild" },
         "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
       },
       {
         "@type": "Product",
-        "name": "Wildschwein aus dem Spessart",
+        "name": "Schwarzwild aus dem Spessart",
         "description": "Intensiv im Geschmack, natürlich aufgewachsen. Schulter und Keule – je nach Saison.",
         "brand": { "@type": "Brand", "name": "Edelwild" },
         "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
       },
       {
         "@type": "Product",
-        "name": "Hirschfleisch Premiumqualität",
+        "name": "Rotwild Premiumqualität",
         "description": "Edel und kräftig. Rücken und Keule in Premiumqualität – direkt aus dem Spessart.",
+        "brand": { "@type": "Brand", "name": "Edelwild" },
+        "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
+      },
+      {
+        "@type": "Product",
+        "name": "Damwild aus dem Spessart",
+        "description": "Fein marmoriert, mild im Geschmack. Rücken und Keule – vakuumiert, aus eigener Wildkammer.",
         "brand": { "@type": "Brand", "name": "Edelwild" },
         "offers": { "@type": "Offer", "availability": "https://schema.org/LimitedAvailability", "priceCurrency": "EUR" }
       }
@@ -334,6 +341,20 @@
     }
     .product-desc { font-size: 1rem; line-height: 1.7; opacity: 0.75; }
 
+    .badges-row {
+      display: flex; flex-wrap: wrap; gap: 0.7rem;
+      justify-content: center; margin-top: 2.5rem;
+    }
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid rgba(212,168,75,0.35);
+      background: rgba(212,168,75,0.04);
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
     /* ── GEWÜRZE ──────────────────────────── */
     #gewuerze {
       background:
@@ -497,7 +518,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-photo" data-src="images/hirsch-hero.jpg" role="img" aria-label="Hirsch im Spessart – Edelwild Wildfleisch aus Hösbach bei Aschaffenburg"></div>
+  <div class="hero-photo" data-src="images/hirsch-hero.jpg" role="img" aria-label="Rotwild im Spessart – Edelwild Wildfleisch aus Hösbach bei Aschaffenburg"></div>
   <div class="hero-content">
     <h1 class="hero-wordmark">EDELWILD</h1>
     <p class="hero-tagline">Natur in jedem Bissen</p>
@@ -556,10 +577,10 @@
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
         <div class="product-body no-photo">
-          <h3 class="product-name" itemprop="name">REHFLEISCH</h3>
-          <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken, Keule und Gulasch — vakuumiert, aus eigener Wildkammer.</p>
+          <h3 class="product-name" itemprop="name">REHWILD</h3>
+          <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken und Keule — vakuumiert, aus eigener Wildkammer.</p>
           <div class="product-btns">
-            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rehfleisch%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rehwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
           </div>
         </div>
@@ -567,10 +588,10 @@
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
         <div class="product-body no-photo">
-          <h3 class="product-name" itemprop="name">WILDSCHWEIN</h3>
+          <h3 class="product-name" itemprop="name">SCHWARZWILD</h3>
           <p class="product-desc" itemprop="description">Intensiv im Geschmack, natürlich aufgewachsen. Schulter und Keule — je nach Saison.</p>
           <div class="product-btns">
-            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Wildschwein%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Schwarzwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
           </div>
         </div>
@@ -578,15 +599,33 @@
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
         <div class="product-body no-photo">
-          <h3 class="product-name" itemprop="name">HIRSCH</h3>
+          <h3 class="product-name" itemprop="name">ROTWILD</h3>
           <p class="product-desc" itemprop="description">Edel und kräftig. Rücken und Keule in Premiumqualität — direkt aus dem Spessart.</p>
           <div class="product-btns">
-            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Hirschfleisch%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rotwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
           </div>
         </div>
       </article>
 
+      <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
+        <div class="product-body no-photo">
+          <h3 class="product-name" itemprop="name">DAMWILD</h3>
+          <p class="product-desc" itemprop="description">Fein marmoriert, mild im Geschmack. Rücken und Keule — vakuumiert, aus eigener Wildkammer.</p>
+          <div class="product-btns">
+            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Damwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="badges-row reveal">
+      <span class="badge">EU-zertifizierte Wildkammer</span>
+      <span class="badge">Aus eigener Jagd</span>
+      <span class="badge">Regional · Spessart</span>
+      <span class="badge">Vakuumfrisch verarbeitet</span>
     </div>
   </div>
 </section>
@@ -605,17 +644,17 @@
         </div>
         <div class="product-body">
           <h3 class="product-name">WILDGEWÜRZ SPESSART</h3>
-          <p class="product-desc">Wacholderbeeren, Lorbeer, Rosmarin, Thymian. Die klassische Mischung für Reh und Hirsch.</p>
+          <p class="product-desc">Wacholderbeeren, Lorbeer, Rosmarin, Thymian. Die klassische Mischung für Rehwild und Rotwild.</p>
           <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20dem%20Wildgewürz%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
         </div>
       </article>
 
       <article class="product-card reveal">
-        <div class="product-photo" data-src="images/freepik_dark-red-wine-marinade-in_2802268952.png" role="img" aria-label="Wildmarinade Dunkel auf Rotweinnbasis, ideal für Wildschwein">
+        <div class="product-photo" data-src="images/freepik_dark-red-wine-marinade-in_2802268952.png" role="img" aria-label="Wildmarinade Dunkel auf Rotweinnbasis, ideal für Schwarzwild">
         </div>
         <div class="product-body">
           <h3 class="product-name">WILDMARINADE DUNKEL</h3>
-          <p class="product-desc">Rotwein-Basis, dunkle Gewürze, leichte Schärfe. Ideal für Wildschwein und Schmorgerichte.</p>
+          <p class="product-desc">Rotwein-Basis, dunkle Gewürze, leichte Schärfe. Ideal für Schwarzwild und Schmorgerichte.</p>
           <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20der%20Wildmarinade%20Dunkel." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
         </div>
       </article>
@@ -650,9 +689,9 @@
         <p class="section-label">Für Feinschmecker</p>
         <h2 class="section-title">Wild trifft<br><em>Genuss</em></h2>
         <div class="divider"></div>
-        <p>Aus unseren edlen Stücken lassen sich wunderbare Gerichte zaubern — wie hier ein deftiges Wildschwein-Nackensteak mit Kräuterbutter.</p>
+        <p>Aus unseren edlen Stücken lassen sich wunderbare Gerichte zaubern — wie hier ein deftiges Schwarzwild-Nackensteak mit Kräuterbutter.</p>
       </div>
-      <div class="story-photo" data-src="images/feinschmecker-steak.jpg" role="img" aria-label="Wildschweinsteak mit Kräuterbutter – Zubereitungsidee"></div>
+      <div class="story-photo" data-src="images/feinschmecker-steak.jpg" role="img" aria-label="Schwarzwildsteak mit Kräuterbutter – Zubereitungsidee"></div>
     </div>
   </div>
 </section>
