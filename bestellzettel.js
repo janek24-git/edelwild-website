@@ -703,10 +703,13 @@
   function renderFab() {
     var lines = validLines();
     var n = lines.length;
-    ui.fab.classList.toggle('bz-visible', n > 0);
-    ui.fab.querySelector('.bz-fab-count').textContent = String(n);
-    ui.fab.querySelector('.bz-fab-sum').textContent = 'ca. ' + fmtEur(total());
-    ui.fab.setAttribute('aria-label', 'Einkaufsliste öffnen, ' + n + (n === 1 ? ' Position' : ' Positionen') + ', ca. ' + fmtEur(total()));
+    ui.fab.classList.add('bz-visible');
+    ui.fab.classList.toggle('bz-empty', n === 0);
+    ui.fab.querySelector('.bz-fab-count').textContent = n > 0 ? String(n) : '';
+    ui.fab.querySelector('.bz-fab-sum').textContent = n > 0 ? 'ca. ' + fmtEur(total()) : 'Stücke wählen';
+    ui.fab.setAttribute('aria-label', n > 0
+      ? 'Einkaufsliste öffnen, ' + n + (n === 1 ? ' Position' : ' Positionen') + ', ca. ' + fmtEur(total())
+      : 'Einkaufsliste öffnen, noch leer');
   }
 
   function renderAll() {
