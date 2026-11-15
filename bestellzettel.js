@@ -247,8 +247,10 @@
       if (!s || typeof s !== 'object') s = {};
       if (!Array.isArray(s.lines)) s.lines = [];
       if (!s.form || typeof s.form !== 'object') s.form = {};
+      if (!Array.isArray(s.recipes)) s.recipes = [];
+      s.recipes = s.recipes.filter(function (r) { return r && typeof r.name === 'string' && Array.isArray(r.ids); });
       return s;
-    } catch (e) { return { lines: [], form: {} }; }
+    } catch (e) { return { lines: [], form: {}, recipes: [] }; }
   }
 
   function saveState() {
@@ -277,6 +279,28 @@
     line.qty = roundQty(item, qty);
     saveState();
     renderAll();
+  }
+
+  function putLine(id, qty) {
+    var item = itemsById[id];
+    if (!item || !item.available) return;
+    var q = roundQty(item, qty);
+    var line = findLine(id);
+    if (line) line.qty = q;
+    else state.lines.push({ id: id, qty: q });
+  }
+
+  function rememberRecipe(name, persons, ids) {
+    state.recipes = state.recipes.filter(function (r) { return r.name !== name; });
+    state.recipes.push({ name: name, persons: persons, ids: ids });
+  }
+
+  function recipeLines() {
+    var present = {};
+    validLines().forEach(function (l) { present[l.id] = true; });
+    return state.recipes.filter(function (r) {
+      return r.ids.some(function (id) { return present[id]; });
+    });
   }
 
   function removeLine(id) {
@@ -346,6 +370,9 @@
       out.push('– ' + label + ', ' + fmtQty(it, l.qty) + ' ' + priceStr);
     });
     out.push('Ca.-Summe: ' + fmtEur(total()));
+    recipeLines().forEach(function (r) {
+      out.push('Geplant: ' + r.name + ' für ' + r.persons + (r.persons === 1 ? ' Person' : ' Personen'));
+    });
     var mode = f.mode === 'lieferung' ? 'Lieferung' : 'Abholung';
     var where = (f.ort || '').trim();
     var day = fmtDateDE(f.tag);
@@ -386,7 +413,7 @@
   function buildShell() {
     var sr = el('div', { class: 'bz-sr', 'aria-live': 'polite', id: 'bz-live' });
     var fab = el('button', { type: 'button', class: 'bz-fab', 'aria-haspopup': 'dialog', 'aria-controls': 'bz-drawer' }, [
-      el('span', { class: 'bz-fab-label' }, 'Meine Einkaufsliste'),
+      el('span', { class: 'bz-fab-label' }, [el('span', { class: 'bz-fab-my' }, 'Meine '), 'Einkaufsliste']),
       el('span', { class: 'bz-fab-count', 'aria-hidden': 'true' }),
       el('span', { class: 'bz-fab-sum' })
     ]);
@@ -820,6 +847,188 @@
     });
   }
 
+  var recipeSeq = 0;
+
+  function parseRecipeItems(spec) {
+    return String(spec || '').split(',').map(function (part) {
+      var p = part.trim().split(':');
+      if (!p[0]) return null;
+      var g = (p[1] || '').trim();
+      if (g === 'spice') return { id: p[0], spice: true };
+      var n = parseFloat(g);
+      return n > 0 ? { id: p[0], perPerson: n } : null;
+    }).filter(Boolean);
+  }
+
+  function itemLabel(it, fallback) {
+    if (!it) return fallback;
+    return it.wildart === 'Gewürze' ? it.name : it.wildart + ' ' + it.name;
+  }
+
+  function toast(msg) {
+    var old = document.querySelector('.bz-toast');
+    if (old) old.parentNode.removeChild(old);
+    var t = el('div', { class: 'bz-toast', role: 'status' }, msg);
+    document.body.appendChild(t);
+    setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 3600);
+  }
+
+  function buildRecipe(root) {
+    var name = root.getAttribute('data-bz-recipe') || '';
+    var spec = parseRecipeItems(root.getAttribute('data-bz-items'));
+    if (!name || !spec.length) return;
+    var uid = 'bz-rp-' + (recipeSeq++);
+    var persons = 4;
+    var MAXP = 20;
+    clear(root);
+    root.classList.add('bz-rp');
+
+    var input = el('input', { type: 'number', id: uid + '-p', min: '1', max: String(MAXP), step: '1', inputmode: 'numeric', value: '4' });
+    var minus = el('button', { type: 'button', 'aria-label': 'Eine Person weniger' }, '−');
+    var plus = el('button', { type: 'button', 'aria-label': 'Eine Person mehr' }, '+');
+    var personsBox = el('div', { class: 'bz-rp-persons' }, [
+      el('label', { for: uid + '-p' }, 'Für wie viele Personen?'),
+      el('div', { class: 'bz-qty' }, [minus, input, plus])
+    ]);
+
+    var rows = spec.map(function (s) {
+      var nameNode = el('span', { class: 'bz-rp-name' });
+      var subNode = el('span', { class: 'bz-rp-sub' });
+      var priceNode = el('span', { class: 'bz-rp-price' });
+      var box = null;
+      var main;
+      if (s.spice) {
+        box = el('input', { type: 'checkbox', id: uid + '-' + s.id, checked: true });
+        box.addEventListener('change', render);
+        main = el('label', { class: 'bz-rp-check', for: box.id }, [box, el('span', null, [nameNode, subNode])]);
+      } else {
+        main = el('span', { class: 'bz-rp-main' }, [nameNode, subNode]);
+      }
+      var li = el('li', { class: 'bz-rp-row' }, [main, priceNode]);
+      return { s: s, li: li, name: nameNode, sub: subNode, price: priceNode, box: box, it: null, qty: 0 };
+    });
+    var ul = el('ul', { class: 'bz-rp-rows' }, rows.map(function (r) { return r.li; }));
+
+    var sumNode = el('strong');
+    var sumBox = el('div', { class: 'bz-rp-sum' }, [el('span', null, 'Ca.-Summe'), sumNode]);
+    var note = el('p', { class: 'bz-rp-note' }, 'Beilagen und übrige Zutaten kaufen Sie wie gewohnt ein, Anton liefert das Wild.');
+    var askNode = el('p', { class: 'bz-rp-ask' });
+    var addBtn = el('button', { type: 'button', class: 'btn btn-whatsapp btn-sm' }, 'Auf die Einkaufsliste setzen');
+    var directBtn = el('button', { type: 'button', class: 'btn btn-mail btn-sm' }, 'Direkt an Anton anfragen');
+    var actions = el('div', { class: 'bz-rp-actions' }, [addBtn, directBtn]);
+
+    root.appendChild(el('h4', { class: 'bz-rp-title' }, 'Einkaufsliste für dieses Rezept'));
+    root.appendChild(personsBox);
+    root.appendChild(ul);
+    root.appendChild(sumBox);
+    root.appendChild(note);
+    root.appendChild(askNode);
+    root.appendChild(actions);
+
+    function render() {
+      var sum = 0;
+      var missing = [];
+      var usable = 0;
+      rows.forEach(function (r) {
+        var it = itemsById[r.s.id] || null;
+        r.it = it;
+        r.name.textContent = itemLabel(it, r.s.id);
+        if (!it || !it.available) {
+          r.qty = 0;
+          r.li.classList.add('bz-off');
+          r.sub.textContent = 'aktuell nicht verfügbar';
+          r.price.textContent = '';
+          if (r.box) r.box.disabled = true;
+          if (!r.s.spice) missing.push(itemLabel(it, r.s.id));
+          return;
+        }
+        r.li.classList.remove('bz-off');
+        if (r.s.spice) {
+          r.box.disabled = false;
+          r.qty = r.box.checked ? 1 : 0;
+          r.sub.textContent = '1 × 100 g';
+        } else {
+          r.qty = roundQty(it, persons * r.s.perPerson / 1000);
+          r.sub.textContent = fmtQty(it, r.qty) + ' (' + persons + ' × ' + r.s.perPerson + ' g)';
+        }
+        if (r.qty > 0) {
+          var lt = lineTotal(it, r.qty);
+          sum += lt;
+          usable++;
+          r.price.textContent = (it.unit === 'kg' ? 'ca. ' : '') + fmtEur(lt);
+        } else {
+          r.price.textContent = '';
+        }
+      });
+      sumNode.textContent = 'ca. ' + fmtEur(sum);
+      var blocked = missing.length > 0 || usable === 0;
+      addBtn.disabled = blocked;
+      directBtn.disabled = blocked;
+      clear(askNode);
+      askNode.hidden = missing.length === 0;
+      if (missing.length) {
+        var text = 'Hallo Anton, ich plane ' + name + ' für ' + persons + ' Personen, gibt es ' + missing[0] + ' bald wieder?';
+        askNode.appendChild(document.createTextNode(missing[0] + ' ist aktuell nicht verfügbar. '));
+        askNode.appendChild(el('a', { href: waUrl(text), target: '_blank', rel: 'noopener noreferrer' }, 'Anton fragen'));
+      }
+      minus.disabled = persons <= 1;
+      plus.disabled = persons >= MAXP;
+    }
+
+    function setPersons(n) {
+      persons = Math.min(MAXP, Math.max(1, n));
+      input.value = String(persons);
+      render();
+    }
+
+    input.addEventListener('input', function () {
+      var n = parseInt(input.value, 10);
+      if (n >= 1 && n <= MAXP) { persons = n; render(); }
+    });
+    input.addEventListener('change', function () {
+      var n = parseInt(input.value, 10);
+      setPersons(isFinite(n) ? n : persons);
+    });
+    minus.addEventListener('click', function () { setPersons(persons - 1); });
+    plus.addEventListener('click', function () { setPersons(persons + 1); });
+
+    function commit() {
+      var ids = [];
+      rows.forEach(function (r) {
+        if (r.qty > 0 && r.it && r.it.available) { putLine(r.s.id, r.qty); ids.push(r.s.id); }
+      });
+      if (!ids.length) return false;
+      rememberRecipe(name, persons, ids);
+      saveState();
+      renderAll();
+      ui.fab.classList.remove('bz-bump');
+      void ui.fab.offsetWidth;
+      ui.fab.classList.add('bz-bump');
+      return true;
+    }
+
+    addBtn.addEventListener('click', function () {
+      if (!commit()) return;
+      toast('Zutaten für ' + name + ' stehen auf der Einkaufsliste');
+      announce('Zutaten für ' + name + ' auf die Einkaufsliste gesetzt');
+      openDrawer(addBtn);
+    });
+    directBtn.addEventListener('click', function () {
+      if (!commit()) return;
+      openDrawer(directBtn);
+      setTimeout(function () {
+        var n = document.getElementById('bz-name');
+        if (n) n.focus();
+      }, 140);
+    });
+
+    render();
+  }
+
+  function renderRecipes() {
+    document.querySelectorAll('[data-bz-recipe]').forEach(buildRecipe);
+  }
+
   function bindTriggers() {
     document.addEventListener('click', function (e) {
       var o = e.target.closest ? e.target.closest('[data-bz-open]') : null;
@@ -860,6 +1069,7 @@
       renderInfoSlots();
       renderPriceFor();
       renderPriceLists();
+      renderRecipes();
       renderFab();
       document.documentElement.setAttribute('data-bz-source', data.source);
     });
