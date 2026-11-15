@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/bestellzettel.css" />
   <style>
     :root {
       --forest:     #141a10;
@@ -164,7 +165,7 @@
       line-height: 1.5; vertical-align: middle;
     }
     .menu-table td:first-child { opacity: 0.88; }
-    .menu-table td:last-child {
+    .menu-table td.price {
       text-align: right; white-space: nowrap;
       font-family: 'Cinzel', serif; font-size: 0.78rem;
       letter-spacing: 0.1em; color: var(--gold);
@@ -285,15 +286,15 @@
           <h3>Preise pro Kilogramm</h3>
           <p class="sub">vakuumiert, direkt vom Jäger</p>
         </div>
-        <table class="menu-table">
+        <table class="menu-table" data-bz-wildart="Rehwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td>49,90 €/kg</td></tr>
-            <tr><td>Lendenfilet</td><td>57,90 €/kg</td></tr>
-            <tr><td>Keulensteak</td><td>29,90 €/kg</td></tr>
-            <tr><td>Keule / Braten</td><td>22,90 €/kg</td></tr>
-            <tr><td>Schulterbraten</td><td>18,90 €/kg</td></tr>
-            <tr><td>Nackensteak</td><td>20,90 €/kg</td></tr>
-            <tr><td>Rollbraten</td><td>25,90 €/kg</td></tr>
+            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -313,16 +314,16 @@
           <h3>Preise pro Kilogramm</h3>
           <p class="sub">vakuumiert, direkt vom Jäger</p>
         </div>
-        <table class="menu-table">
+        <table class="menu-table" data-bz-wildart="Schwarzwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td>42,90 €/kg</td></tr>
-            <tr><td>Lendenfilet</td><td>48,90 €/kg</td></tr>
-            <tr><td>Keulensteak</td><td>25,90 €/kg</td></tr>
-            <tr><td>Keule / Braten</td><td>20,90 €/kg</td></tr>
-            <tr><td>Schulterbraten</td><td>16,90 €/kg</td></tr>
-            <tr><td>Nackensteak</td><td>18,90 €/kg</td></tr>
-            <tr><td>Rollbraten</td><td>22,90 €/kg</td></tr>
-            <tr><td>Rippchen</td><td>13,90 €/kg</td></tr>
+            <tr><td>Rückenfilet</td><td class="price">42,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">48,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">16,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rippchen</td><td class="price">13,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rippchen" aria-label="Rippchen auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -342,15 +343,15 @@
           <h3>Preise pro Kilogramm</h3>
           <p class="sub">vakuumiert, direkt vom Jäger</p>
         </div>
-        <table class="menu-table">
+        <table class="menu-table" data-bz-wildart="Damwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td>49,90 €/kg</td></tr>
-            <tr><td>Lendenfilet</td><td>57,90 €/kg</td></tr>
-            <tr><td>Keulensteak</td><td>29,90 €/kg</td></tr>
-            <tr><td>Keule / Braten</td><td>22,90 €/kg</td></tr>
-            <tr><td>Schulterbraten</td><td>18,90 €/kg</td></tr>
-            <tr><td>Nackensteak</td><td>20,90 €/kg</td></tr>
-            <tr><td>Rollbraten</td><td>25,90 €/kg</td></tr>
+            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -370,15 +371,15 @@
           <h3>Preise pro Kilogramm</h3>
           <p class="sub">vakuumiert, direkt vom Jäger</p>
         </div>
-        <table class="menu-table">
+        <table class="menu-table" data-bz-wildart="Rotwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td>49,90 €/kg</td></tr>
-            <tr><td>Lendenfilet</td><td>57,90 €/kg</td></tr>
-            <tr><td>Keulensteak</td><td>29,90 €/kg</td></tr>
-            <tr><td>Keule / Braten</td><td>22,90 €/kg</td></tr>
-            <tr><td>Schulterbraten</td><td>18,90 €/kg</td></tr>
-            <tr><td>Nackensteak</td><td>20,90 €/kg</td></tr>
-            <tr><td>Rollbraten</td><td>25,90 €/kg</td></tr>
+            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -398,12 +399,12 @@
           <h3>Preise je 100 g</h3>
           <p class="sub">eigene Rezepturen</p>
         </div>
-        <table class="menu-table">
+        <table class="menu-table" data-bz-wildart="Gewürze">
           <tbody>
-            <tr><td>Waidmanns Würze <span class="note">Wildsteak Gewürz</span></td><td>6,90 €</td></tr>
-            <tr><td>Spessart BBQ <span class="note">Barbecue Gewürz</span></td><td>6,90 €</td></tr>
-            <tr><td>Waldgeister Gewürz <span class="note">Naturgewürz mit Pilzen</span></td><td>7,90 €</td></tr>
-            <tr><td>Gewürzt &amp; eingelegt <span class="note">auf Anfrage</span></td><td>Preis n. V.</td></tr>
+            <tr><td>Waidmanns Würze <span class="note">Wildsteak Gewürz</span></td><td class="price">6,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__waidmanns-wuerze" aria-label="Waidmanns Würze auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Spessart BBQ <span class="note">Barbecue Gewürz</span></td><td class="price">6,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__spessart-bbq" aria-label="Spessart BBQ auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Waldgeister Gewürz <span class="note">Naturgewürz mit Pilzen</span></td><td class="price">7,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__waldgeister-gewuerz" aria-label="Waldgeister Gewürz auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Gewürzt &amp; eingelegt <span class="note">auf Anfrage</span></td><td class="price">Preis n. V.</td><td class="action"></td></tr>
           </tbody>
         </table>
       </div>
@@ -464,5 +465,6 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 </script>
+<script defer src="/bestellzettel.js"></script>
 </body>
 </html>

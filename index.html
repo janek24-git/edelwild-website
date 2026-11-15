@@ -90,6 +90,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/bestellzettel.css" />
   <style>
     :root {
       --forest:     #141a10;
@@ -428,6 +429,7 @@
     }
     .btn-whatsapp:hover { background: var(--gold-light); border-color: var(--gold-light); }
     .btn-sm { padding: 0.6rem 1.2rem; font-size: 0.65rem; margin-top: 1rem; }
+    button.btn { cursor: pointer; }
     .btn-mail {
       background: transparent; color: var(--gold-light);
       border: 1px solid var(--gold-dim);
@@ -571,44 +573,48 @@
     <div class="product-grid">
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-body no-photo">
+        <div class="product-photo" data-src="images/tier-rehwild.jpg" role="img" aria-label="Rehbock am Waldrand – Rehwild aus dem Spessart"></div>
+        <div class="product-body">
           <h3 class="product-name" itemprop="name">REHWILD</h3>
           <p class="product-desc" itemprop="description">Zart, mager, aromatisch. Rücken und Keule — vakuumiert, aus eigener Wildkammer.</p>
           <div class="product-btns">
-            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rehwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <button type="button" class="btn btn-whatsapp btn-sm" data-bz-wildart="Rehwild">Auf den Zettel</button>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
           </div>
         </div>
       </article>
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-body no-photo">
+        <div class="product-photo" data-src="images/tier-schwarzwild.jpg" role="img" aria-label="Wildschweine auf einer Waldlichtung – Schwarzwild aus dem Spessart"></div>
+        <div class="product-body">
           <h3 class="product-name" itemprop="name">SCHWARZWILD</h3>
           <p class="product-desc" itemprop="description">Intensiv im Geschmack, natürlich aufgewachsen. Schulter und Keule — je nach Saison.</p>
           <div class="product-btns">
-            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Schwarzwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <button type="button" class="btn btn-whatsapp btn-sm" data-bz-wildart="Schwarzwild">Auf den Zettel</button>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
           </div>
         </div>
       </article>
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-body no-photo">
+        <div class="product-photo" data-src="images/tier-rotwild.jpg" role="img" aria-label="Rothirsch im Herbstwald – Rotwild aus dem Spessart"></div>
+        <div class="product-body">
           <h3 class="product-name" itemprop="name">ROTWILD</h3>
           <p class="product-desc" itemprop="description">Edel und kräftig. Rücken und Keule in Premiumqualität — direkt aus dem Spessart.</p>
           <div class="product-btns">
-            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Rotwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <button type="button" class="btn btn-whatsapp btn-sm" data-bz-wildart="Rotwild">Auf den Zettel</button>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
           </div>
         </div>
       </article>
 
       <article class="product-card reveal" itemscope itemtype="https://schema.org/Product">
-        <div class="product-body no-photo">
+        <div class="product-photo" data-src="images/tier-damwild.jpg" role="img" aria-label="Damhirsch mit Schaufelgeweih auf der Wiese – Damwild aus dem Spessart"></div>
+        <div class="product-body">
           <h3 class="product-name" itemprop="name">DAMWILD</h3>
           <p class="product-desc" itemprop="description">Fein marmoriert, mild im Geschmack. Rücken und Keule — vakuumiert, aus eigener Wildkammer.</p>
           <div class="product-btns">
-            <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20Damwild%20aus%20dem%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+            <button type="button" class="btn btn-whatsapp btn-sm" data-bz-wildart="Damwild">Auf den Zettel</button>
             <a href="/preise.html" class="btn btn-mail btn-sm">Zur Preisliste</a>
           </div>
         </div>
@@ -640,7 +646,7 @@
         <div class="product-body">
           <h3 class="product-name">WILDGEWÜRZ SPESSART</h3>
           <p class="product-desc">Wacholderbeeren, Lorbeer, Rosmarin, Thymian. Die klassische Mischung für Rehwild und Rotwild.</p>
-          <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20dem%20Wildgewürz%20Spessart." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+          <button type="button" class="btn btn-whatsapp btn-sm" data-bz-wildart="Gewürze">Auf den Zettel</button>
         </div>
       </article>
 
@@ -650,7 +656,7 @@
         <div class="product-body">
           <h3 class="product-name">WILDMARINADE DUNKEL</h3>
           <p class="product-desc">Rotwein-Basis, dunkle Gewürze, leichte Schärfe. Ideal für Schwarzwild und Schmorgerichte.</p>
-          <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20an%20der%20Wildmarinade%20Dunkel." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+          <button type="button" class="btn btn-whatsapp btn-sm" data-bz-wildart="Gewürze">Auf den Zettel</button>
         </div>
       </article>
 
@@ -660,7 +666,7 @@
         <div class="product-body">
           <h3 class="product-name">KRÄUTERSALZ WILD</h3>
           <p class="product-desc">Meersalz, Bergkräuter, Knoblauch. Vielseitig einsetzbar — zum Würzen vor und nach dem Braten.</p>
-          <a href="https://wa.me/491754130040?text=Hey%20Anton%2C%20ich%20habe%20Interesse%20am%20Kräutersalz%20Wild." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">WhatsApp anfragen</a>
+          <button type="button" class="btn btn-whatsapp btn-sm" data-bz-wildart="Gewürze">Auf den Zettel</button>
         </div>
       </article>
 
@@ -796,5 +802,6 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 </script>
+<script defer src="/bestellzettel.js"></script>
 </body>
 </html>
