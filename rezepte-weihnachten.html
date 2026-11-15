@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rezeptideen für Weihnachten – Wild aus dem Spessart | Edelwild</title>
+  <meta name="description" content="Vier klassische Wildrezepte für Weihnachten: Rehkeule, Hirschbraten, Wildschweinrücken und Wildgulasch. Mit Einkaufsliste für Ihre Personenzahl, Wild direkt vom Jäger Anton Krüger." />
+  <link rel="canonical" href="https://edelwild-krueger.de/rezepte-weihnachten.html" />
+
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/bestellzettel.css" />
+  <style>
+    :root {
+      --forest:     #141a10;
+      --forest-mid: #1a2014;
+      --gold:       #d4a84b;
+      --gold-light: #e8c472;
+      --gold-dim:   #b8903a;
+      --text:       #ecdcb0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 18px; overflow-x: hidden; }
+    body {
+      background: var(--forest); color: var(--text);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      overflow-x: hidden;
+    }
+    
+    nav {
+      position: fixed; top: var(--bz-bar, 0); left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(14,20,9,0.98);
+      border-bottom: 1px solid rgba(212,168,75,0.12);
+    }
+    .nav-logo {
+      font-family: 'Cinzel', serif; font-size: 1.1rem;
+      letter-spacing: 0.25em; color: var(--gold); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif; font-size: 0.82rem;
+      letter-spacing: 0.16em; color: var(--gold-light);
+      text-decoration: none; opacity: 0.92; transition: opacity 0.2s;
+    }
+    .nav-links a:hover, .nav-links a[aria-current] { opacity: 1; }
+    .nav-links a.nav-highlight {
+      padding: 0.45rem 0.9rem; opacity: 1;
+      border: 1px solid rgba(212,168,75,0.55);
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a.nav-highlight:hover { background: var(--gold); color: var(--forest); }
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none;
+      padding: 0.5rem; z-index: 101;
+    }
+    .nav-burger span {
+      display: block; width: 24px; height: 1px;
+      background: var(--gold);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(9,13,6,0.98);
+        justify-content: center; align-items: center;
+        gap: 2.5rem; z-index: 99;
+      }
+      .nav-links.open a { font-size: 1.1rem; letter-spacing: 0.25em; }
+    }
+        .page-header {
+      padding: 9rem 1.5rem 4rem; text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 60%, rgba(212,168,75,0.13) 0%, transparent 65%),
+        var(--forest-mid);
+    }
+    .page-header .label {
+      font-family: 'Cinzel', serif; font-size: 0.74rem;
+      letter-spacing: 0.3em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 300; color: var(--gold-light); line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .page-header p {
+      max-width: 560px; margin: 0 auto;
+      font-size: 1.15rem; line-height: 1.8; opacity: 0.92;
+    }
+    .divider { width: 56px; height: 1px; background: var(--gold-dim); margin: 1.5rem auto; }
+    .page-header .xmas-deadline {
+      font-family: 'Cinzel', serif; font-size: 0.82rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); margin: 1.6rem auto 0;
+    }
+    .jump {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+      margin-top: 2.8rem;
+    }
+    .jump a {
+      flex-shrink: 0; min-height: 48px; display: inline-flex; align-items: center;
+      padding: 0.6rem 1.3rem;
+      border: 1px solid rgba(212,168,75,0.4);
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold-light); text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .jump a:hover { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+    @media (max-width: 600px) {
+      .jump {
+        flex-wrap: nowrap; justify-content: flex-start;
+        overflow-x: auto; -webkit-overflow-scrolling: touch;
+        margin-left: -1.5rem; margin-right: -1.5rem;
+        padding: 0 1.5rem 0.4rem;
+        scrollbar-width: none;
+      }
+      .jump::-webkit-scrollbar { display: none; }
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      min-height: 48px; padding: 0.9rem 2.2rem;
+      font-family: 'Cinzel', serif; font-size: 0.85rem;
+      letter-spacing: 0.16em; text-decoration: none;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .btn-whatsapp {
+      background: var(--gold); color: var(--forest);
+      border: 1px solid var(--gold);
+    }
+    .btn-whatsapp:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-mail {
+      background: transparent; color: var(--gold-light);
+      border: 1px solid var(--gold-dim);
+    }
+    .btn-mail:hover { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .recipes { padding: 5rem 1.5rem 6rem; }
+    .container { max-width: 1020px; margin: 0 auto; }
+    .recipe { margin-bottom: 5.5rem; scroll-margin-top: 7.5rem; }
+    .recipe:last-child { margin-bottom: 0; }
+    .recipe-photo {
+      aspect-ratio: 16/7; margin-bottom: 2.2rem;
+      background: linear-gradient(135deg, #1e2c20, #172219);
+      background-size: cover; background-position: center;
+      border: 1px solid rgba(212,168,75,0.25);
+      filter: saturate(0.85) contrast(1.06) brightness(0.9);
+    }
+    @media (max-width: 720px) { .recipe-photo { aspect-ratio: 4/3; margin-bottom: 1.6rem; } }
+    .recipe-label {
+      font-family: 'Cinzel', serif; font-size: 0.74rem;
+      letter-spacing: 0.3em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .recipe h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+      font-weight: 300; color: var(--gold-light); line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .recipe h2 em { color: var(--gold); font-style: italic; }
+    .recipe-meta {
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold-dim); margin-bottom: 1.4rem;
+    }
+    .recipe-lead { font-size: 1.2rem; line-height: 1.8; opacity: 0.94; max-width: 720px; }
+    .recipe-cols {
+      display: grid; grid-template-columns: 5fr 7fr; gap: 3rem; margin-top: 2.4rem;
+    }
+    @media (max-width: 800px) { .recipe-cols { grid-template-columns: 1fr; gap: 2rem; } }
+    .recipe h3 {
+      font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 1rem;
+      padding-bottom: 0.7rem; border-bottom: 1px solid rgba(212,168,75,0.2);
+    }
+    .ingredients { list-style: none; }
+    .ingredients li {
+      padding: 0.45rem 0; border-bottom: 1px solid rgba(212,168,75,0.08);
+      font-size: 1.15rem; line-height: 1.45;
+    }
+    .ingredients li:last-child { border-bottom: none; }
+    .ingredients .group {
+      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold-dim); padding-top: 1rem; border-bottom: none;
+    }
+    .steps-list { list-style: none; counter-reset: step; }
+    .steps-list li {
+      counter-increment: step; position: relative;
+      padding: 0 0 1.1rem 3rem; font-size: 1.15rem; line-height: 1.7;
+    }
+    .steps-list li::before {
+      content: counter(step); position: absolute; left: 0; top: 0;
+      font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold);
+    }
+    .recipe-hint {
+      margin-top: 0.6rem; padding: 0.9rem 1.1rem;
+      border: 1px solid rgba(212,168,75,0.3); background: rgba(212,168,75,0.06);
+      font-size: 1.1rem; line-height: 1.6;
+    }
+    .recipe-hint strong {
+      font-family: 'Cinzel', serif; font-weight: 400; font-size: 0.74rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-right: 0.5rem;
+    }
+    .recipe-sep {
+      width: 100%; height: 1px; margin: 0 0 5.5rem;
+      background: linear-gradient(to right, transparent, rgba(212,168,75,0.2), transparent);
+    }
+    .recipe-loading { font-size: 1.05rem; font-style: italic; opacity: 0.8; }
+    .cta-end { padding: 4.5rem 1.5rem; text-align: center; background: var(--forest-mid); }
+    .cta-end p { max-width: 560px; margin: 0 auto 1.8rem; font-size: 1.15rem; line-height: 1.8; opacity: 0.92; }
+    .cta-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .btn-sm { padding: 0.7rem 1.3rem; font-size: 0.85rem; letter-spacing: 0.1em; }
+    button.btn { cursor: pointer; }
+    footer {
+      background: #090d06;
+      border-top: 1px solid rgba(212,168,75,0.18);
+      padding: 3rem 1.5rem; text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Cinzel', serif; font-size: 1rem;
+      letter-spacing: 0.32em; color: var(--gold-dim); margin-bottom: 1rem;
+    }
+    .footer-copy {
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      color: var(--gold-dim); opacity: 0.3; font-family: 'Cinzel', serif;
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.85s ease, transform 0.85s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<div class="bz-announce"><a href="/preise.html#weihnachten">Weihnachtsbraten vom Jäger aus dem Spessart · Jetzt für die Feiertage vormerken</a></div>
+
+<nav>
+  <a href="/" class="nav-logo">EDELWILD</a>
+  <ul class="nav-links">
+    <li><a href="/#story">Über uns</a></li>
+    <li><a href="/#produkte">Produkte</a></li>
+    <li><a href="/#gewuerze">Gewürze</a></li>
+    <li><a href="/preise.html" class="nav-highlight">Preise</a></li>
+    <li><a href="/rezepte-weihnachten.html" aria-current="page">Rezepte</a></li>
+    <li><a href="/geschaeftskunden.html">Geschäftskunden</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#kontakt">Kontakt</a></li>
+  </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<header class="page-header">
+  <p class="label">Festtage</p>
+  <h1>Rezeptideen<br><em>für Weihnachten</em></h1>
+  <div class="divider"></div>
+  <p>Wild aus dem Spessart, vom Jäger selbst erlegt. Vier klassische Rezepte für die Feiertage, jedes mit einer Einkaufsliste: Sie stellen die Personenzahl ein, die Menge Wild wird für Sie ausgerechnet.</p>
+  <p class="xmas-deadline" data-bz-info="weihnachten_bestellschluss" data-bz-template="Bestellschluss für Weihnachten: {v}" hidden></p>
+  <div class="jump" role="navigation" aria-label="Zu den Rezepten">
+    <a href="#rehkeule">Rehkeule</a>
+    <a href="#hirschbraten">Hirschbraten</a>
+    <a href="#wildschweinruecken">Wildschweinrücken</a>
+    <a href="#wildgulasch">Wildgulasch</a>
+  </div>
+</header>
+
+<main class="recipes">
+  <div class="container">
+    <article class="recipe reveal" id="rehkeule">
+      <div class="recipe-photo" data-src="images/feinschmecker-steak.jpg" role="img" aria-label="Zubereitetes Wildfleisch mit Kräuterbutter – Rezeptidee aus dem Spessart"></div>
+      <p class="recipe-label">Rehwild · Schmorbraten</p>
+      <h2>Rehkeule geschmort mit<br><em>Rotwein-Wacholder-Sauce</em></h2>
+      <p class="recipe-meta">Rehwild · ca. 2,5 Stunden · mittel</p>
+      <p class="recipe-lead">Eine Rehkeule, die langsam im Rotwein schmort, bis sie sich mit der Gabel teilen lässt. Dunkle Sauce, Wacholder und ein Hauch Pilz vom Waldgeister Gewürz: der Klassiker für den Festtagstisch.</p>
+      <div class="recipe-cols">
+        <div>
+          <h3>Zutaten für 4 Personen</h3>
+          <ul class="ingredients"><li class="group">Fleisch</li><li>1 kg Rehwild Keule / Braten</li><li>2 EL Waldgeister Gewürz</li><li>2 EL Butterschmalz</li><li>Salz und Pfeffer</li><li class="group">Sauce</li><li>2 Zwiebeln</li><li>2 Karotten</li><li>100 g Sellerie</li><li>2 EL Tomatenmark</li><li>400 ml kräftiger Rotwein</li><li>300 ml Wildfond</li><li>8 Wacholderbeeren</li><li>2 Lorbeerblätter</li><li>2 Zweige Thymian</li><li>1 EL Preiselbeeren</li><li>1 EL kalte Butter</li></ul>
+        </div>
+        <div>
+          <h3>Zubereitung</h3>
+          <ol class="steps-list"><li>Die Keule eine Stunde vor dem Braten aus dem Kühlschrank nehmen, trocken tupfen und mit Salz, Pfeffer und Waldgeister Gewürz einreiben. Backofen auf 160 °C Ober-/Unterhitze vorheizen.</li><li>Butterschmalz im Bräter stark erhitzen und die Keule rundum 6 bis 8 Minuten kräftig anbraten. Herausnehmen.</li><li>Zwiebeln, Karotten und Sellerie grob würfeln und im Bratfett 5 Minuten anrösten. Tomatenmark zugeben und 2 Minuten mitrösten.</li><li>Mit dem Rotwein ablöschen und auf die Hälfte einkochen. Wildfond, leicht angedrückte Wacholderbeeren, Lorbeer und Thymian zugeben.</li><li>Die Keule zurück in den Bräter legen, Deckel auflegen und im Ofen etwa 2 Stunden schmoren. Nach einer Stunde einmal wenden.</li><li>Keule herausnehmen und 10 Minuten in Alufolie ruhen lassen. Die Sauce durch ein Sieb gießen, bei Bedarf sämig einkochen, Preiselbeeren einrühren und mit der kalten Butter abrunden.</li><li>Die Keule quer zur Faser in Scheiben schneiden und mit der Sauce servieren. Dazu passen Spätzle oder Klöße.</li></ol>
+          <p class="recipe-hint"><strong>Kerntemperatur</strong> Geschmort ist die Keule bei etwa 85 bis 90 °C Kerntemperatur. Entscheidend ist: Die Gabel gleitet ohne Widerstand hinein.</p>
+        </div>
+      </div>
+      <div data-bz-recipe="Rehkeule geschmort" data-bz-items="rehwild__keule-braten:250,gewuerze__waldgeister-gewuerz:spice"><p class="recipe-loading">Einkaufsliste für dieses Rezept wird geladen.</p></div>
+    </article>
+    <div class="recipe-sep" aria-hidden="true"></div>
+    <article class="recipe reveal" id="hirschbraten">
+      <div class="recipe-photo" data-src="images/gastronomie-teller.jpg" role="img" aria-label="Angerichteter Wildteller – Zubereitungsidee für Rotwild"></div>
+      <p class="recipe-label">Rotwild · Festtagsbraten</p>
+      <h2>Hirschbraten mit<br><em>Rotkohl und Klößen</em></h2>
+      <p class="recipe-meta">Rotwild · ca. 3 Stunden · mittel</p>
+      <p class="recipe-lead">Kräftig im Geschmack, dunkel in der Sauce: Hirschbraten mit Rotkohl und Klößen ist das Festessen, das nach Weihnachten schmeckt. Der Braten schmort allein im Ofen, der Rotkohl nebenher auf dem Herd.</p>
+      <div class="recipe-cols">
+        <div>
+          <h3>Zutaten für 4 Personen</h3>
+          <ul class="ingredients"><li class="group">Braten</li><li>1 kg Rotwild Keule / Braten</li><li>1,5 EL Waldgeister Gewürz</li><li>2 EL Butterschmalz</li><li>2 Zwiebeln</li><li>2 Karotten</li><li>2 EL Tomatenmark</li><li>300 ml Rotwein</li><li>400 ml Wildfond</li><li>2 Lorbeerblätter</li><li>6 Wacholderbeeren</li><li>Salz und Pfeffer</li><li class="group">Rotkohl</li><li>600 g Rotkohl</li><li>1 Apfel</li><li>1 Zwiebel</li><li>2 EL Schmalz</li><li>150 ml Rotwein oder Apfelsaft</li><li>2 EL Essig</li><li>1 EL Zucker</li><li>1 Nelke, 1 Lorbeerblatt</li><li class="group">Klöße</li><li>Kloßteig oder Kartoffelkloßmehl für 4 Personen</li></ul>
+        </div>
+        <div>
+          <h3>Zubereitung</h3>
+          <ol class="steps-list"><li>Den Braten eine Stunde vor dem Garen aus dem Kühlschrank nehmen, trocken tupfen und mit Salz, Pfeffer und Waldgeister Gewürz einreiben. Backofen auf 160 °C vorheizen.</li><li>Butterschmalz im Bräter erhitzen und den Braten rundum kräftig anbraten. Herausnehmen, Zwiebeln und Karotten grob würfeln und im Bratfett anrösten. Tomatenmark kurz mitrösten.</li><li>Mit Rotwein ablöschen, einkochen, Wildfond, Lorbeer und Wacholder zugeben. Braten einlegen, zugedeckt 2 bis 2,5 Stunden im Ofen schmoren. Nach der Hälfte der Zeit wenden.</li><li>Rotkohl fein hobeln. Zwiebel und Apfel würfeln und in Schmalz glasig dünsten. Kohl, Zucker, Essig, Rotwein, Nelke, Lorbeer und Salz zugeben und zugedeckt 60 Minuten schmoren, zwischendurch rühren.</li><li>Die Klöße nach Packungsanleitung formen und in Salzwasser gar ziehen lassen, nicht sprudelnd kochen.</li><li>Den Braten herausnehmen und 10 Minuten in Folie ruhen lassen. Die Sauce durch ein Sieb gießen und einkochen, nach Wunsch mit etwas angerührter Speisestärke binden.</li><li>Braten in Scheiben schneiden und mit Rotkohl, Klößen und Sauce servieren.</li></ol>
+          <p class="recipe-hint"><strong>Kerntemperatur</strong> Geschmort ist der Braten bei etwa 85 bis 90 °C Kerntemperatur. Er ist fertig, wenn er sich mit der Gabel leicht zerteilen lässt.</p>
+        </div>
+      </div>
+      <div data-bz-recipe="Hirschbraten mit Rotkohl und Klößen" data-bz-items="rotwild__keule-braten:250,gewuerze__waldgeister-gewuerz:spice"><p class="recipe-loading">Einkaufsliste für dieses Rezept wird geladen.</p></div>
+    </article>
+    <div class="recipe-sep" aria-hidden="true"></div>
+    <article class="recipe reveal" id="wildschweinruecken">
+      <div class="recipe-photo" data-src="images/handarbeit-schnitt.jpg" role="img" aria-label="Handwerkliche Zerlegung von Wildfleisch aus dem Spessart"></div>
+      <p class="recipe-label">Schwarzwild · Ofengericht</p>
+      <h2>Wildschweinrücken zart aus dem Ofen<br><em>mit Preiselbeer-Jus</em></h2>
+      <p class="recipe-meta">Schwarzwild · ca. 1,5 Stunden · einfach</p>
+      <p class="recipe-lead">Ein Rücken, der sanft im Ofen gart, bis er durch und saftig ist. Dazu ein dunkler Jus mit Preiselbeeren. Wildschwein wird immer vollständig durchgegart, das gelingt mit niedriger Hitze und einem Bratenthermometer ohne Mühe.</p>
+      <div class="recipe-cols">
+        <div>
+          <h3>Zutaten für 4 Personen</h3>
+          <ul class="ingredients"><li class="group">Fleisch</li><li>800 g Schwarzwild Rückenfilet</li><li>2 EL Waidmanns Würze</li><li>1 TL schwarzer Pfeffer, frisch gemahlen</li><li>2 EL Butterschmalz</li><li>2 Zweige Thymian</li><li class="group">Jus</li><li>1 Zwiebel</li><li>1 Karotte</li><li>100 ml Rotwein</li><li>200 ml Wildfond</li><li>3 EL Preiselbeeren</li><li>1 TL Speisestärke (nach Wunsch)</li><li>1 EL kalte Butter</li></ul>
+        </div>
+        <div>
+          <h3>Zubereitung</h3>
+          <ol class="steps-list"><li>Den Rücken 30 bis 60 Minuten vor dem Braten aus dem Kühlschrank nehmen, trocken tupfen und mit Waidmanns Würze und Pfeffer einreiben. Backofen auf 150 °C Ober-/Unterhitze vorheizen.</li><li>Butterschmalz in einer ofenfesten Pfanne oder einem Bräter heiß werden lassen. Den Rücken rundum je etwa 2 Minuten goldbraun anbraten, Thymian dazulegen.</li><li>Das Bratenthermometer mittig in die dickste Stelle stecken und den Rücken im Ofen garen, bis 72 °C erreicht sind. Je nach Dicke dauert das 40 bis 60 Minuten.</li><li>Währenddessen Zwiebel und Karotte klein würfeln und im Bratfett einer zweiten Pfanne anrösten. Mit Rotwein ablöschen, einkochen, Wildfond zugeben und 15 Minuten köcheln lassen.</li><li>Den Jus durch ein Sieb gießen, Preiselbeeren einrühren und kurz einkochen. Nach Wunsch mit der angerührten Stärke binden, zum Schluss die kalte Butter einrühren.</li><li>Den Rücken 10 Minuten in Alufolie ruhen lassen, quer zur Faser aufschneiden und mit dem Jus servieren. Dazu passen Rosenkohl und Kartoffelgratin.</li></ol>
+          <p class="recipe-hint"><strong>Kerntemperatur</strong> Wildschwein vollständig durchgaren, nicht rosa servieren. Das Bundesinstitut für Risikobewertung empfiehlt mindestens 70 °C Kerntemperatur über zwei Minuten. Mit 72 °C und anschließendem Ruhen in Folie sind Sie auf der sicheren Seite.</p>
+        </div>
+      </div>
+      <div data-bz-recipe="Wildschweinrücken aus dem Ofen" data-bz-items="schwarzwild__rueckenfilet:200,gewuerze__waidmanns-wuerze:spice"><p class="recipe-loading">Einkaufsliste für dieses Rezept wird geladen.</p></div>
+    </article>
+    <div class="recipe-sep" aria-hidden="true"></div>
+    <article class="recipe reveal" id="wildgulasch">
+      <div class="recipe-photo" data-src="images/freepik_rich-dark-wild-boar-goula_2802285230.png" role="img" aria-label="Dunkles Wildschweingulasch im Topf"></div>
+      <p class="recipe-label">Schwarzwild · für viele Gäste</p>
+      <h2>Wildgulasch vom Wildschwein<br><em>für die große Runde</em></h2>
+      <p class="recipe-meta">Schwarzwild · ca. 3 Stunden · einfach</p>
+      <p class="recipe-lead">Ein Topf, viel Geduld, wenig Aufwand: Wildgulasch schmort allein und schmeckt am nächsten Tag noch besser. Ideal für Gäste, denn es lässt sich gut vorbereiten und beliebig vergrößern. Stellen Sie unten einfach die Personenzahl ein.</p>
+      <div class="recipe-cols">
+        <div>
+          <h3>Zutaten für 4 Personen</h3>
+          <ul class="ingredients"><li>1 kg Schwarzwild Schulterbraten</li><li>2 EL Spessart BBQ Gewürz</li><li>3 EL Butterschmalz</li><li>600 g Zwiebeln</li><li>1 Knoblauchzehe</li><li>2 EL Tomatenmark</li><li>1 EL Paprikapulver edelsüß</li><li>300 ml Rotwein</li><li>500 ml Wildfond</li><li>2 Lorbeerblätter</li><li>1 rote Paprikaschote</li><li>Salz und Pfeffer</li></ul>
+        </div>
+        <div>
+          <h3>Zubereitung</h3>
+          <ol class="steps-list"><li>Den Schulterbraten in etwa 3 cm große Würfel schneiden, trocken tupfen und mit Spessart BBQ, Salz und Pfeffer mischen.</li><li>Butterschmalz im Topf stark erhitzen und das Fleisch in mehreren Portionen scharf anbraten, damit es nicht Wasser zieht. Herausnehmen.</li><li>Zwiebeln würfeln und im Bratfett etwa 10 Minuten goldbraun rösten. Knoblauch, Tomatenmark und Paprikapulver 1 Minute mitrösten, ohne dass es dunkel wird.</li><li>Mit dem Rotwein ablöschen und einkochen. Wildfond und Lorbeer zugeben und das Fleisch zurück in den Topf geben.</li><li>Zugedeckt bei kleiner Hitze 2 bis 2,5 Stunden schmoren, gelegentlich umrühren. In den letzten 30 Minuten die Paprika in Streifen zugeben.</li><li>Abschmecken und bei Bedarf offen weiter einkochen, bis die Sauce sämig ist. Mit Spätzle, Nudeln oder Brot servieren.</li></ol>
+          <p class="recipe-hint"><strong>Kerntemperatur</strong> Wildschwein vollständig durchgaren. Beim Gulasch ist das gegeben, sobald das Fleisch weich ist. Mindestens 70 °C Kerntemperatur über zwei Minuten empfiehlt das Bundesinstitut für Risikobewertung.</p>
+        </div>
+      </div>
+      <div data-bz-recipe="Wildgulasch vom Wildschwein" data-bz-items="schwarzwild__schulterbraten:250,gewuerze__spessart-bbq:spice"><p class="recipe-loading">Einkaufsliste für dieses Rezept wird geladen.</p></div>
+    </article>
+  </div>
+</main>
+
+<section class="cta-end">
+  <p>Direkt vom Jäger, kein Versand: Anton bringt das Wild im Umkreis persönlich vorbei, oder Sie holen es in Hösbach ab.</p>
+  <div class="cta-buttons">
+    <a href="/preise.html" class="btn btn-mail">Zur Preisliste</a>
+    <button type="button" class="btn btn-whatsapp" data-bz-open="drawer">Einkaufsliste öffnen</button>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-wordmark">EDELWILD</p>
+  <p class="footer-copy">EDELWILD · NATUR IN JEDEM BISSEN · SPESSART</p>
+</footer>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const navLinks = document.querySelector('.nav-links');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+      burger.setAttribute('aria-label', navLinks.classList.contains('open') ? 'Menü schließen' : 'Menü öffnen');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+        burger.setAttribute('aria-label', 'Menü öffnen');
+      });
+    });
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+<script>
+  function loadBgImages() {
+    document.querySelectorAll('[data-src]').forEach(el => {
+      const src = el.dataset.src;
+      const img = new Image();
+      img.onload = () => { el.style.backgroundImage = `url('${src}')`; };
+      img.src = src;
+    });
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(loadBgImages);
+  else window.addEventListener('load', loadBgImages);
+</script>
+<script defer src="/bestellzettel.js"></script>
+</body>
+</html>
