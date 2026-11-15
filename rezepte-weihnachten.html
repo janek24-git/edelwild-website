@@ -23,7 +23,7 @@
       --text:       #ecdcb0;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 18px; }
+    html { scroll-behavior: smooth; font-size: 18px; overflow-x: hidden; }
     body {
       background: var(--forest); color: var(--text);
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -41,7 +41,7 @@
       font-family: 'Cinzel', serif; font-size: 1.1rem;
       letter-spacing: 0.25em; color: var(--gold); text-decoration: none;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
     .nav-links a {
       font-family: 'Cinzel', serif; font-size: 0.82rem;
       letter-spacing: 0.16em; color: var(--gold-light);
@@ -67,7 +67,7 @@
     .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     .nav-burger.open span:nth-child(2) { opacity: 0; }
     .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-    @media (max-width: 960px) {
+    @media (max-width: 1080px) {
       .nav-links { display: none; }
       .nav-burger { display: flex; }
       .nav-links.open {
@@ -252,7 +252,8 @@
     <li><a href="/#story">Über uns</a></li>
     <li><a href="/#produkte">Produkte</a></li>
     <li><a href="/#gewuerze">Gewürze</a></li>
-    <li><a href="/preise.html" class="nav-highlight" aria-current="page">Preise</a></li>
+    <li><a href="/preise.html" class="nav-highlight">Preise</a></li>
+    <li><a href="/rezepte-weihnachten.html" aria-current="page">Rezepte</a></li>
     <li><a href="/geschaeftskunden.html">Geschäftskunden</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/#kontakt">Kontakt</a></li>

@@ -33,7 +33,7 @@
         "@type": "LocalBusiness",
         "@id": "https://edelwild-krueger.de/#business",
         "name": "Edelwild",
-        "description": "Privater Direktverkauf von Wildfleisch aus eigener Jagd im Spessart.",
+        "description": "Wildfleisch direkt vom Jäger aus eigener Jagd im Spessart, verarbeitet in EU-zugelassener Wildkammer.",
         "founder": {
           "@type": "Person",
           "name": "Anton Krüger"
@@ -103,7 +103,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 18px; }
+    html { scroll-behavior: smooth; font-size: 18px; overflow-x: hidden; }
     body {
       background: var(--forest);
       color: var(--text);
@@ -128,7 +128,7 @@
       font-size: 1.1rem; letter-spacing: 0.25em;
       color: var(--gold); text-decoration: none;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
     .nav-links a {
       font-family: 'Cinzel', serif;
       font-size: 0.82rem; letter-spacing: 0.16em;
@@ -155,7 +155,7 @@
     .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     .nav-burger.open span:nth-child(2) { opacity: 0; }
     .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-    @media (max-width: 960px) {
+    @media (max-width: 1080px) {
       .nav-links { display: none; }
       .nav-burger { display: flex; }
       .nav-links.open {
@@ -424,6 +424,10 @@
       font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600;
       letter-spacing: 0.06em; color: var(--gold-light); white-space: nowrap;
     }
+    @media (max-width: 480px) {
+      .price-mini li { font-size: 1rem; gap: 0.6rem; }
+      .price-mini .price { font-size: 0.78rem; letter-spacing: 0.03em; }
+    }
     .price-mini li.bz-off span { opacity: 0.55; }
     .price-mini li.bz-off span:first-child { text-decoration: line-through; }
     .price-mini li.bz-off .price {
@@ -557,7 +561,7 @@
       color: var(--gold-dim); margin-bottom: 1.8rem;
     }
     .footer-nav {
-      display: flex; justify-content: center; gap: 2rem;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem 2rem;
       list-style: none; margin-bottom: 2.5rem;
     }
     .footer-nav a {
@@ -608,6 +612,7 @@
     <li><a href="/#produkte">Produkte</a></li>
     <li><a href="/#gewuerze">Gewürze</a></li>
     <li><a href="/preise.html" class="nav-highlight">Preise</a></li>
+    <li><a href="/rezepte-weihnachten.html">Rezepte</a></li>
     <li><a href="/geschaeftskunden.html">Geschäftskunden</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/#kontakt">Kontakt</a></li>
@@ -925,6 +930,8 @@
     <li><a href="#story">Über uns</a></li>
     <li><a href="#produkte">Produkte</a></li>
     <li><a href="#gewuerze">Gewürze</a></li>
+    <li><a href="/preise.html">Preise</a></li>
+    <li><a href="/rezepte-weihnachten.html">Rezepte</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
     <li><a href="#impressum">Impressum</a></li>
@@ -937,9 +944,6 @@
     <strong>Kontakt</strong><br>
     Telefon: <a href="tel:+491754130040">0175 413 0040</a><br>
     E-Mail: <a href="mailto:anton@edelwild-krueger.de">anton@edelwild-krueger.de</a><br><br>
-    <strong>Hinweis</strong><br>
-    Privater Direktverkauf von Wildfleisch aus eigener Jagd.<br>
-    Kein gewerblicher Lebensmitteleinzelhandel im Sinne des EU-Hygienerechts (VO (EG) 853/2004, Anhang III).<br><br>
     Alle Texte und Bilder: © Anton Krüger / Edelwild. Alle Rechte vorbehalten.
   </div>
   <p class="footer-copy">EDELWILD · NATUR IN JEDEM BISSEN · SPESSART</p>
