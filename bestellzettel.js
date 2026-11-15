@@ -54,6 +54,7 @@
   var ui = {};
   var lastOpener = null;
   var pickerQty = {};
+  var source = 'static';
 
   function parseCSV(text) {
     var rows = [];
@@ -212,6 +213,10 @@
       return 'ca. ' + String(qty).replace('.', ',') + ' kg';
     }
     return qty + ' × 100 g';
+  }
+
+  function fmtKg(kg) {
+    return String(kg).replace('.', ',') + ' kg';
   }
 
   function fmtPriceLabel(item) {
@@ -381,8 +386,8 @@
   function buildShell() {
     var sr = el('div', { class: 'bz-sr', 'aria-live': 'polite', id: 'bz-live' });
     var fab = el('button', { type: 'button', class: 'bz-fab', 'aria-haspopup': 'dialog', 'aria-controls': 'bz-drawer' }, [
+      el('span', { class: 'bz-fab-label' }, 'Einkaufsliste'),
       el('span', { class: 'bz-fab-count', 'aria-hidden': 'true' }),
-      el('span', { class: 'bz-fab-label' }, 'Zettel'),
       el('span', { class: 'bz-fab-sum' })
     ]);
     fab.addEventListener('click', function () { openDrawer(fab); });
@@ -479,7 +484,7 @@
     var picker = ui.picker;
     clear(picker);
     pickerQty = {};
-    picker.appendChild(head('Auf den Zettel', [titleText, ' ', { em: 'wählen' }], 'bz-picker-title'));
+    picker.appendChild(head('Auf die Einkaufsliste', [titleText, ' ', { em: 'wählen' }], 'bz-picker-title'));
     var body = el('div', { class: 'bz-body' });
     infoBanners().forEach(function (b) { body.appendChild(b); });
 
@@ -521,11 +526,11 @@
       function updLine() { lineOut.textContent = (it.unit === 'kg' ? 'ca. ' : '') + fmtEur(lineTotal(it, pickerQty[it.id])); }
       var qc = qtyControl(it, function () { return pickerQty[it.id]; }, function (q) { pickerQty[it.id] = q; updLine(); });
       updLine();
-      var addBtn = el('button', { type: 'button', class: 'btn btn-whatsapp btn-sm' }, 'Auf den Zettel');
+      var addBtn = el('button', { type: 'button', class: 'btn btn-whatsapp btn-sm' }, 'Auf die Einkaufsliste');
       addBtn.addEventListener('click', function () {
         addLine(it.id, pickerQty[it.id]);
-        announce(it.name + ' auf den Zettel gelegt');
-        addBtn.textContent = 'Liegt drauf';
+        announce(it.name + ' auf die Einkaufsliste gesetzt');
+        addBtn.textContent = 'Steht drauf';
         setTimeout(function () { addBtn.textContent = 'Nochmal drauf'; }, 1400);
         ui.fab.classList.remove('bz-bump');
         void ui.fab.offsetWidth;
@@ -540,7 +545,7 @@
     picker.appendChild(body);
 
     var foot = el('div', { class: 'bz-foot' });
-    var toDrawer = el('button', { type: 'button', class: 'btn btn-ghost btn-sm btn-block' }, 'Zum Bestellzettel');
+    var toDrawer = el('button', { type: 'button', class: 'btn btn-ghost btn-sm btn-block' }, 'Zur Einkaufsliste');
     toDrawer.addEventListener('click', function () { openDrawer(lastOpener); });
     foot.appendChild(toDrawer);
     picker.appendChild(foot);
@@ -564,13 +569,13 @@
   function renderDrawer() {
     var drawer = ui.drawer;
     clear(drawer);
-    drawer.appendChild(head('Deine Anfrage', ['Dein ', { em: 'Bestellzettel' }], 'bz-drawer-title'));
+    drawer.appendChild(head('Deine Anfrage', ['Deine ', { em: 'Einkaufsliste' }], 'bz-drawer-title'));
     var body = el('div', { class: 'bz-body' });
     infoBanners().forEach(function (b) { body.appendChild(b); });
 
     var lines = validLines();
     if (!lines.length) {
-      body.appendChild(el('p', { class: 'bz-empty' }, 'Noch nichts auf dem Zettel. Wähl ein Stück aus dem Angebot und leg es drauf.'));
+      body.appendChild(el('p', { class: 'bz-empty' }, 'Noch nichts auf der Einkaufsliste. Wähl ein Stück aus dem Angebot und setz es drauf.'));
       drawer.appendChild(body);
       return;
     }
@@ -701,7 +706,7 @@
     ui.fab.classList.toggle('bz-visible', n > 0);
     ui.fab.querySelector('.bz-fab-count').textContent = String(n);
     ui.fab.querySelector('.bz-fab-sum').textContent = 'ca. ' + fmtEur(total());
-    ui.fab.setAttribute('aria-label', 'Bestellzettel öffnen, ' + n + (n === 1 ? ' Position' : ' Positionen') + ', ca. ' + fmtEur(total()));
+    ui.fab.setAttribute('aria-label', 'Einkaufsliste öffnen, ' + n + (n === 1 ? ' Position' : ' Positionen') + ', ca. ' + fmtEur(total()));
   }
 
   function renderAll() {
@@ -731,9 +736,9 @@
         tr.appendChild(el('td', { class: 'price' }, fmtPriceLabel(it)));
         var tdAct = el('td', { class: 'action' });
         if (it.available) {
-          tdAct.appendChild(el('button', { type: 'button', class: 'bz-add', 'data-bz-item': it.id, 'aria-label': it.name + ' auf den Zettel' }, [
+          tdAct.appendChild(el('button', { type: 'button', class: 'bz-add', 'data-bz-item': it.id, 'aria-label': it.name + ' auf die Einkaufsliste' }, [
             el('span', { class: 'bz-plus', 'aria-hidden': 'true' }, '+'),
-            el('span', { class: 'bz-add-text' }, 'Zettel')
+            el('span', { class: 'bz-add-text' }, 'Liste')
           ]));
         }
         tr.appendChild(tdAct);
@@ -749,8 +754,73 @@
     }
   }
 
+  function renderAnnounce() {
+    var link = document.querySelector('.bz-announce a');
+    if (!link) return;
+    var text = '';
+    if (info.hinweis) text = info.hinweis;
+    else if (info.weihnachten_text) text = info.weihnachten_text;
+    else if (info.weihnachten_bestellschluss) text = 'Weihnachtsbraten vom Jäger · Bestellschluss ' + info.weihnachten_bestellschluss + ' · Preise ansehen';
+    if (text) link.textContent = text;
+  }
+
+  function renderInfoSlots() {
+    document.querySelectorAll('[data-bz-info]').forEach(function (node) {
+      var v = String(info[node.getAttribute('data-bz-info')] || '').trim();
+      if (!v) return;
+      var tpl = node.getAttribute('data-bz-template') || '{v}';
+      node.textContent = tpl.split('{v}').join(v);
+      node.hidden = false;
+    });
+  }
+
+  function renderPriceFor() {
+    document.querySelectorAll('[data-bz-price-for]').forEach(function (node) {
+      var it = itemsById[node.getAttribute('data-bz-price-for')];
+      if (!it) return;
+      var card = node.closest('.product-card') || node.parentNode;
+      var btn = card.querySelector('[data-bz-item]');
+      if (!it.available) {
+        node.textContent = 'aktuell nicht verfügbar';
+        node.classList.add('bz-off');
+        if (btn) btn.disabled = true;
+      } else {
+        var kg = parseFloat(node.getAttribute('data-bz-kg'));
+        var text = fmtPriceLabel(it);
+        if (it.unit === 'kg' && kg > 0) text += ' · ca. ' + fmtEur(lineTotal(it, kg)) + ' für ' + fmtKg(kg);
+        node.textContent = text;
+        node.classList.remove('bz-off');
+        if (btn) btn.disabled = false;
+      }
+      node.setAttribute('data-bz-filled', source);
+    });
+  }
+
+  function renderPriceLists() {
+    document.querySelectorAll('[data-bz-pricelist]').forEach(function (node) {
+      var list = byWildart(node.getAttribute('data-bz-pricelist'));
+      if (!list.length) return;
+      var cuts = (node.getAttribute('data-bz-cuts') || '').split('|').map(function (s) { return s.trim(); }).filter(Boolean);
+      var rows = cuts.map(function (c) {
+        for (var i = 0; i < list.length; i++) if (list[i].name.toLowerCase() === c.toLowerCase()) return list[i];
+        return null;
+      }).filter(Boolean);
+      if (!rows.length) return;
+      clear(node);
+      rows.forEach(function (it) {
+        node.appendChild(el('li', { class: it.available ? null : 'bz-off' }, [
+          el('span', null, it.name),
+          el('span', { class: 'price' }, fmtPriceLabel(it))
+        ]));
+      });
+      node.setAttribute('data-bz-filled', source);
+    });
+  }
+
   function bindTriggers() {
     document.addEventListener('click', function (e) {
+      var o = e.target.closest ? e.target.closest('[data-bz-open]') : null;
+      if (o) { e.preventDefault(); openDrawer(o); return; }
       var t = e.target.closest ? e.target.closest('[data-bz-wildart], [data-bz-item]') : null;
       if (!t) return;
       e.preventDefault();
@@ -781,7 +851,12 @@
       itemsById = {};
       items.forEach(function (it) { itemsById[it.id] = it; });
       Object.keys(data.info || {}).forEach(function (k) { info[k] = data.info[k]; });
+      source = data.source;
       renderPriceTables();
+      renderAnnounce();
+      renderInfoSlots();
+      renderPriceFor();
+      renderPriceLists();
       renderFab();
       document.documentElement.setAttribute('data-bz-source', data.source);
     });

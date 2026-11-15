@@ -23,7 +23,7 @@
       --text:       #ecdcb0;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 18px; }
     body {
       background: var(--forest); color: var(--text);
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -32,7 +32,7 @@
 
     /* ── NAV ─────────────────────────────── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: var(--bz-bar, 0); left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 2.5rem;
       background: rgba(14,20,9,0.98);
@@ -44,11 +44,17 @@
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-family: 'Cinzel', serif; font-size: 0.7rem;
-      letter-spacing: 0.2em; color: var(--gold-light);
-      text-decoration: none; opacity: 0.85; transition: opacity 0.2s;
+      font-family: 'Cinzel', serif; font-size: 0.82rem;
+      letter-spacing: 0.16em; color: var(--gold-light);
+      text-decoration: none; opacity: 0.92; transition: opacity 0.2s;
     }
     .nav-links a:hover, .nav-links a[aria-current] { opacity: 1; }
+    .nav-links a.nav-highlight {
+      padding: 0.45rem 0.9rem; opacity: 1;
+      border: 1px solid rgba(212,168,75,0.55);
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a.nav-highlight:hover { background: var(--gold); color: var(--forest); }
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; background: none; border: none;
@@ -62,7 +68,7 @@
     .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     .nav-burger.open span:nth-child(2) { opacity: 0; }
     .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-    @media (max-width: 600px) {
+    @media (max-width: 960px) {
       .nav-links { display: none; }
       .nav-burger { display: flex; }
       .nav-links.open {
@@ -83,8 +89,8 @@
         var(--forest-mid);
     }
     .page-header .label {
-      font-family: 'Cinzel', serif; font-size: 0.62rem;
-      letter-spacing: 0.38em; color: var(--gold-dim);
+      font-family: 'Cinzel', serif; font-size: 0.74rem;
+      letter-spacing: 0.3em; color: var(--gold);
       text-transform: uppercase; margin-bottom: 0.8rem;
     }
     .page-header h1 {
@@ -94,23 +100,67 @@
     }
     .page-header h1 em { color: var(--gold); font-style: italic; }
     .page-header p {
-      max-width: 520px; margin: 0 auto;
-      font-size: 1.1rem; line-height: 1.8; opacity: 0.7;
+      max-width: 560px; margin: 0 auto;
+      font-size: 1.15rem; line-height: 1.8; opacity: 0.92;
     }
     .divider { width: 56px; height: 1px; background: var(--gold-dim); margin: 1.5rem auto; }
+
+    .xmas-box {
+      max-width: 560px; margin: 2.6rem auto 0;
+      padding: 1.7rem 1.6rem 1.9rem;
+      border: 1px solid rgba(212,168,75,0.3);
+      background: rgba(212,168,75,0.05);
+      scroll-margin-top: 7.5rem;
+    }
+    .xmas-box .xmas-deadline {
+      font-family: 'Cinzel', serif; font-size: 0.82rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 0.8rem; opacity: 1;
+    }
+    .xmas-box p { opacity: 0.92; }
+    .xmas-box .btn { margin-top: 1.4rem; }
+    .jump {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+      margin-top: 2.8rem;
+    }
+    .jump a {
+      flex-shrink: 0; min-height: 48px; display: inline-flex; align-items: center;
+      padding: 0.6rem 1.3rem;
+      border: 1px solid rgba(212,168,75,0.4);
+      font-family: 'Cinzel', serif; font-size: 0.8rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold-light); text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .jump a:hover { background: var(--gold); color: var(--forest); border-color: var(--gold); }
+    @media (max-width: 600px) {
+      .jump {
+        flex-wrap: nowrap; justify-content: flex-start;
+        overflow-x: auto; -webkit-overflow-scrolling: touch;
+        margin-left: -1.5rem; margin-right: -1.5rem;
+        padding: 0 1.5rem 0.4rem;
+        scrollbar-width: none;
+      }
+      .jump::-webkit-scrollbar { display: none; }
+    }
+    .menu-intro {
+      text-align: center; max-width: 560px; margin: 0 auto 3.5rem;
+      font-size: 1.15rem; line-height: 1.7; font-style: italic; opacity: 0.9;
+    }
+    button.btn { cursor: pointer; }
 
     /* ── MENU BODY ───────────────────────── */
     .menu-body { padding: 5rem 1.5rem 6rem; }
     .container { max-width: 1020px; margin: 0 auto; }
 
     /* Wild category */
-    .wild-section { margin-bottom: 5rem; }
+    .wild-section { margin-bottom: 5rem; scroll-margin-top: 7.5rem; }
     .wild-heading {
       text-align: center; margin-bottom: 3rem;
     }
     .wild-heading .label {
-      font-family: 'Cinzel', serif; font-size: 0.62rem;
-      letter-spacing: 0.38em; color: var(--gold-dim);
+      font-family: 'Cinzel', serif; font-size: 0.74rem;
+      letter-spacing: 0.3em; color: var(--gold);
       text-transform: uppercase; margin-bottom: 0.6rem;
     }
     .wild-heading h2 {
@@ -145,13 +195,13 @@
       text-align: center;
     }
     .menu-card-header h3 {
-      font-family: 'Cinzel', serif; font-size: 0.78rem;
-      letter-spacing: 0.25em; color: var(--gold);
+      font-family: 'Cinzel', serif; font-size: 0.9rem;
+      letter-spacing: 0.2em; color: var(--gold-light);
       text-transform: uppercase;
     }
     .menu-card-header .sub {
-      font-size: 0.82rem; color: var(--gold-dim);
-      opacity: 0.65; margin-top: 0.2rem; font-style: italic;
+      font-size: 1rem; color: var(--text);
+      opacity: 0.85; margin-top: 0.25rem; font-style: italic;
     }
     .menu-table { width: 100%; border-collapse: collapse; }
     .menu-table tr {
@@ -161,18 +211,18 @@
     .menu-table tr:last-child { border-bottom: none; }
     .menu-table tr:hover { background: rgba(212,168,75,0.04); }
     .menu-table td {
-      padding: 0.75rem 2rem; font-size: 1.05rem;
-      line-height: 1.5; vertical-align: middle;
+      padding: 0.95rem 2rem; font-size: 1.15rem;
+      line-height: 1.55; vertical-align: middle;
     }
-    .menu-table td:first-child { opacity: 0.88; }
+    .menu-table td:first-child { opacity: 0.95; }
     .menu-table td.price {
       text-align: right; white-space: nowrap;
-      font-family: 'Cinzel', serif; font-size: 0.78rem;
-      letter-spacing: 0.1em; color: var(--gold);
+      font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--gold-light);
     }
     .menu-table td .note {
-      display: block; font-size: 0.82rem;
-      opacity: 0.55; font-style: italic;
+      display: block; font-size: 0.98rem;
+      opacity: 0.78; font-style: italic;
     }
 
     /* ── SEPARATOR ───────────────────────── */
@@ -190,8 +240,8 @@
       padding: 5rem 1.5rem; text-align: center;
     }
     .price-footer .label {
-      font-family: 'Cinzel', serif; font-size: 0.62rem;
-      letter-spacing: 0.38em; color: var(--gold-dim);
+      font-family: 'Cinzel', serif; font-size: 0.74rem;
+      letter-spacing: 0.3em; color: var(--gold);
       text-transform: uppercase; margin-bottom: 0.8rem;
     }
     .price-footer h2 {
@@ -201,8 +251,8 @@
     }
     .price-footer h2 em { color: var(--gold); font-style: italic; }
     .price-note {
-      max-width: 540px; margin: 0 auto 2.5rem;
-      font-size: 1.1rem; line-height: 1.8; opacity: 0.72;
+      max-width: 580px; margin: 0 auto 2.5rem;
+      font-size: 1.15rem; line-height: 1.8; opacity: 0.92;
     }
     .cta-buttons {
       display: flex; flex-wrap: wrap; gap: 1rem;
@@ -210,9 +260,9 @@
     }
     .btn {
       display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 1rem 2.2rem;
-      font-family: 'Cinzel', serif; font-size: 0.72rem;
-      letter-spacing: 0.2em; text-decoration: none;
+      min-height: 48px; padding: 0.9rem 2.2rem;
+      font-family: 'Cinzel', serif; font-size: 0.85rem;
+      letter-spacing: 0.16em; text-decoration: none;
       transition: background 0.25s, color 0.25s, border-color 0.25s;
     }
     .btn-whatsapp {
@@ -248,13 +298,15 @@
 </head>
 <body>
 
+<div class="bz-announce"><a href="/preise.html#weihnachten">Weihnachtsbraten vom Jäger aus dem Spessart · Jetzt für die Feiertage vormerken</a></div>
+
 <nav>
   <a href="/" class="nav-logo">EDELWILD</a>
   <ul class="nav-links">
     <li><a href="/#story">Über uns</a></li>
     <li><a href="/#produkte">Produkte</a></li>
     <li><a href="/#gewuerze">Gewürze</a></li>
-    <li><a href="/preise.html" aria-current="page">Preise</a></li>
+    <li><a href="/preise.html" class="nav-highlight" aria-current="page">Preise</a></li>
     <li><a href="/geschaeftskunden.html">Geschäftskunden</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/#kontakt">Kontakt</a></li>
@@ -269,13 +321,26 @@
   <h1>Unsere<br><em>Preisliste</em></h1>
   <div class="divider"></div>
   <p>Vakuumiertes Wildfleisch aus dem Spessart — frisch, regional, direkt von Anton Krüger. Alle Preise pro Kilogramm.</p>
+  <div class="xmas-box" id="weihnachten">
+    <p class="xmas-deadline" data-bz-info="weihnachten_bestellschluss" data-bz-template="Bestellschluss für Weihnachten: {v}">Weihnachtsbraten vom Jäger</p>
+    <p>Für Weihnachten: früh reservieren, die Mengen sind begrenzt. Anton bestätigt per WhatsApp.</p>
+    <button type="button" class="btn btn-whatsapp" data-bz-open="drawer">Einkaufsliste öffnen</button>
+  </div>
+  <div class="jump" role="navigation" aria-label="Zu den Wildarten">
+    <a href="#rehwild">Rehwild</a>
+    <a href="#schwarzwild">Schwarzwild</a>
+    <a href="#damwild">Damwild</a>
+    <a href="#rotwild">Rotwild</a>
+    <a href="#gewuerze">Gewürze</a>
+  </div>
 </header>
 
 <main class="menu-body">
   <div class="container">
+    <p class="menu-intro">Alle Preise pro kg, vakuumiert. Mengen in 0,5-kg-Schritten, Anton wiegt ab.</p>
 
     <!-- REHWILD -->
-    <section class="wild-section reveal">
+    <section class="wild-section reveal" id="rehwild">
       <div class="wild-heading">
         <p class="label">Cervus elaphus capreolus</p>
         <h2>Reh<em>wild</em></h2>
@@ -288,13 +353,13 @@
         </div>
         <table class="menu-table" data-bz-wildart="Rehwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__rueckenfilet" aria-label="Rückenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__lendenfilet" aria-label="Lendenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__keulensteak" aria-label="Keulensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__keule-braten" aria-label="Keule / Braten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__schulterbraten" aria-label="Schulterbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__nackensteak" aria-label="Nackensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rehwild__rollbraten" aria-label="Rollbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -303,7 +368,7 @@
     <div class="section-separator"></div>
 
     <!-- SCHWARZWILD -->
-    <section class="wild-section reveal">
+    <section class="wild-section reveal" id="schwarzwild">
       <div class="wild-heading">
         <p class="label">Sus scrofa</p>
         <h2>Schwarz<em>wild</em></h2>
@@ -316,14 +381,14 @@
         </div>
         <table class="menu-table" data-bz-wildart="Schwarzwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td class="price">42,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Lendenfilet</td><td class="price">48,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keulensteak</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keule / Braten</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Schulterbraten</td><td class="price">16,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Nackensteak</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Rollbraten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Rippchen</td><td class="price">13,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rippchen" aria-label="Rippchen auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rückenfilet</td><td class="price">42,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rueckenfilet" aria-label="Rückenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">48,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__lendenfilet" aria-label="Lendenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__keulensteak" aria-label="Keulensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__keule-braten" aria-label="Keule / Braten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">16,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__schulterbraten" aria-label="Schulterbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__nackensteak" aria-label="Nackensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rollbraten" aria-label="Rollbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Rippchen</td><td class="price">13,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="schwarzwild__rippchen" aria-label="Rippchen auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -332,7 +397,7 @@
     <div class="section-separator"></div>
 
     <!-- DAMWILD -->
-    <section class="wild-section reveal">
+    <section class="wild-section reveal" id="damwild">
       <div class="wild-heading">
         <p class="label">Dama dama</p>
         <h2>Dam<em>wild</em></h2>
@@ -345,13 +410,13 @@
         </div>
         <table class="menu-table" data-bz-wildart="Damwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__rueckenfilet" aria-label="Rückenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__lendenfilet" aria-label="Lendenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__keulensteak" aria-label="Keulensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__keule-braten" aria-label="Keule / Braten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__schulterbraten" aria-label="Schulterbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__nackensteak" aria-label="Nackensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="damwild__rollbraten" aria-label="Rollbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -360,7 +425,7 @@
     <div class="section-separator"></div>
 
     <!-- ROTWILD -->
-    <section class="wild-section reveal">
+    <section class="wild-section reveal" id="rotwild">
       <div class="wild-heading">
         <p class="label">Cervus elaphus</p>
         <h2>Rot<em>wild</em></h2>
@@ -373,13 +438,13 @@
         </div>
         <table class="menu-table" data-bz-wildart="Rotwild">
           <tbody>
-            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__rueckenfilet" aria-label="Rückenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__lendenfilet" aria-label="Lendenfilet auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__keulensteak" aria-label="Keulensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__keule-braten" aria-label="Keule / Braten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__schulterbraten" aria-label="Schulterbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__nackensteak" aria-label="Nackensteak auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__rollbraten" aria-label="Rollbraten auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Rückenfilet</td><td class="price">49,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__rueckenfilet" aria-label="Rückenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Lendenfilet</td><td class="price">57,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__lendenfilet" aria-label="Lendenfilet auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keulensteak</td><td class="price">29,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__keulensteak" aria-label="Keulensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Keule / Braten</td><td class="price">22,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__keule-braten" aria-label="Keule / Braten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Schulterbraten</td><td class="price">18,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__schulterbraten" aria-label="Schulterbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Nackensteak</td><td class="price">20,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__nackensteak" aria-label="Nackensteak auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Rollbraten</td><td class="price">25,90 €/kg</td><td class="action"><button type="button" class="bz-add" data-bz-item="rotwild__rollbraten" aria-label="Rollbraten auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
           </tbody>
         </table>
       </div>
@@ -388,7 +453,7 @@
     <div class="section-separator"></div>
 
     <!-- GEWÜRZE -->
-    <section class="wild-section reveal">
+    <section class="wild-section reveal" id="gewuerze">
       <div class="wild-heading">
         <p class="label">Aus dem Spessart</p>
         <h2>Ge<em>würze</em></h2>
@@ -401,9 +466,9 @@
         </div>
         <table class="menu-table" data-bz-wildart="Gewürze">
           <tbody>
-            <tr><td>Waidmanns Würze <span class="note">Wildsteak Gewürz</span></td><td class="price">6,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__waidmanns-wuerze" aria-label="Waidmanns Würze auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Spessart BBQ <span class="note">Barbecue Gewürz</span></td><td class="price">6,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__spessart-bbq" aria-label="Spessart BBQ auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
-            <tr><td>Waldgeister Gewürz <span class="note">Naturgewürz mit Pilzen</span></td><td class="price">7,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__waldgeister-gewuerz" aria-label="Waldgeister Gewürz auf den Zettel"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Zettel</span></button></td></tr>
+            <tr><td>Waidmanns Würze <span class="note">Wildsteak Gewürz</span></td><td class="price">6,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__waidmanns-wuerze" aria-label="Waidmanns Würze auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Spessart BBQ <span class="note">Barbecue Gewürz</span></td><td class="price">6,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__spessart-bbq" aria-label="Spessart BBQ auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
+            <tr><td>Waldgeister Gewürz <span class="note">Naturgewürz mit Pilzen</span></td><td class="price">7,90 €</td><td class="action"><button type="button" class="bz-add" data-bz-item="gewuerze__waldgeister-gewuerz" aria-label="Waldgeister Gewürz auf die Einkaufsliste"><span class="bz-plus" aria-hidden="true">+</span><span class="bz-add-text">Liste</span></button></td></tr>
             <tr><td>Gewürzt &amp; eingelegt <span class="note">auf Anfrage</span></td><td class="price">Preis n. V.</td><td class="action"></td></tr>
           </tbody>
         </table>
