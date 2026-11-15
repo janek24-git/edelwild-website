@@ -744,7 +744,7 @@
     var lines = validLines();
     var n = lines.length;
     ui.fab.classList.add('bz-visible');
-    ui.fab.classList.toggle('bz-empty', n === 0);
+    ui.fab.classList.toggle('bz-fab-idle', n === 0);
     ui.fab.querySelector('.bz-fab-count').textContent = n > 0 ? String(n) : '';
     ui.fab.querySelector('.bz-fab-sum').textContent = n > 0 ? 'ca. ' + fmtEur(total()) : 'Wild auswählen';
     ui.fab.setAttribute('aria-label', n > 0
