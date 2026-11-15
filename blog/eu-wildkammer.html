@@ -28,6 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/bestellzettel.css" />
   <style>
     :root {
       --forest:     #141a10;
@@ -38,14 +39,14 @@
       --text:       #ecdcb0;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 18px; }
     body {
       background: var(--forest); color: var(--text);
       font-family: 'Cormorant Garamond', Georgia, serif;
       overflow-x: hidden;
     }
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: var(--bz-bar, 0); left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 2.5rem;
       background: rgba(14,20,9,0.98);
@@ -57,11 +58,17 @@
     }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-family: 'Cinzel', serif; font-size: 0.7rem;
-      letter-spacing: 0.2em; color: var(--gold-light);
-      text-decoration: none; opacity: 0.85; transition: opacity 0.2s;
+      font-family: 'Cinzel', serif; font-size: 0.82rem;
+      letter-spacing: 0.16em; color: var(--gold-light);
+      text-decoration: none; opacity: 0.92; transition: opacity 0.2s;
     }
-    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover, .nav-links a[aria-current] { opacity: 1; }
+    .nav-links a.nav-highlight {
+      padding: 0.45rem 0.9rem; opacity: 1;
+      border: 1px solid rgba(212,168,75,0.55);
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a.nav-highlight:hover { background: var(--gold); color: var(--forest); }
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; background: none; border: none;
@@ -75,7 +82,7 @@
     .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     .nav-burger.open span:nth-child(2) { opacity: 0; }
     .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-    @media (max-width: 600px) {
+    @media (max-width: 960px) {
       .nav-links { display: none; }
       .nav-burger { display: flex; }
       .nav-links.open {
@@ -95,26 +102,26 @@
         var(--forest-mid);
     }
     .breadcrumb {
-      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      font-family: 'Cinzel', serif; font-size: 0.72rem;
       letter-spacing: 0.2em; color: var(--gold-dim);
-      margin-bottom: 1.5rem; opacity: 0.6;
+      margin-bottom: 1.5rem; opacity: 0.85;
     }
     .breadcrumb a { color: inherit; text-decoration: none; }
     .breadcrumb a:hover { color: var(--gold); opacity: 1; }
     .article-category {
-      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      font-family: 'Cinzel', serif; font-size: 0.74rem;
       letter-spacing: 0.38em; color: var(--gold-dim);
       text-transform: uppercase; margin-bottom: 0.8rem;
     }
     .article-hero h1 {
-      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 300; color: var(--gold-light);
       line-height: 1.15; margin-bottom: 1.5rem;
       max-width: 780px; margin-left: auto; margin-right: auto;
     }
     .article-meta {
       font-family: 'Cinzel', serif; font-size: 0.6rem;
-      letter-spacing: 0.2em; color: var(--gold-dim); opacity: 0.6;
+      letter-spacing: 0.2em; color: var(--gold-dim); opacity: 0.85;
     }
     .divider { width: 56px; height: 1px; background: var(--gold-dim); margin: 1.5rem auto; }
 
@@ -130,7 +137,7 @@
       padding: 4rem 1.5rem 6rem;
     }
     .article-body h2 {
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 300; color: var(--gold-light);
       margin: 3rem 0 1.2rem; line-height: 1.2;
     }
@@ -142,19 +149,19 @@
     }
     .article-body p {
       font-size: 1.15rem; line-height: 1.9;
-      opacity: 0.88; margin-bottom: 1.4rem;
+      opacity: 0.92; margin-bottom: 1.4rem;
     }
     .article-body em { color: var(--gold-light); font-style: italic; }
     .article-body strong { color: var(--gold-light); font-weight: 600; }
     .article-body ul { padding-left: 1.5rem; margin-bottom: 1.4rem; }
     .article-body li {
-      font-size: 1.1rem; line-height: 1.85; opacity: 0.85; margin-bottom: 0.4rem;
+      font-size: 1.1rem; line-height: 1.85; opacity: 0.92; margin-bottom: 0.4rem;
     }
     .tip-box {
       border-left: 3px solid var(--gold-dim);
       padding: 1rem 1.5rem; margin: 2rem 0;
       background: rgba(212,168,75,0.04);
-      font-style: italic; opacity: 0.85;
+      font-style: italic; opacity: 0.92;
     }
     .tip-box p { margin-bottom: 0; }
     .article-cta {
@@ -165,9 +172,9 @@
     .article-cta p { margin-bottom: 1.5rem; font-size: 1.1rem; }
     .btn {
       display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.9rem 2.2rem;
-      font-family: 'Cinzel', serif; font-size: 0.72rem;
-      letter-spacing: 0.2em; text-decoration: none;
+      min-height: 48px; padding: 0.9rem 2.2rem;
+      font-family: 'Cinzel', serif; font-size: 0.85rem;
+      letter-spacing: 0.16em; text-decoration: none;
       background: var(--gold); color: var(--forest);
       border: 1px solid var(--gold); transition: background 0.25s;
     }
@@ -189,13 +196,15 @@
 </head>
 <body>
 
+<div class="bz-announce"><a href="/preise.html#weihnachten">Weihnachtsbraten vom Jäger aus dem Spessart · Jetzt für die Feiertage vormerken</a></div>
+
 <nav>
   <a href="/" class="nav-logo">EDELWILD</a>
   <ul class="nav-links">
     <li><a href="/#story">Über uns</a></li>
     <li><a href="/#produkte">Produkte</a></li>
     <li><a href="/#gewuerze">Gewürze</a></li>
-    <li><a href="/preise.html">Preise</a></li>
+    <li><a href="/preise.html" class="nav-highlight">Preise</a></li>
     <li><a href="/geschaeftskunden.html">Geschäftskunden</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/#kontakt">Kontakt</a></li>
@@ -279,5 +288,6 @@
     });
   }
 </script>
+<script defer src="/bestellzettel.js"></script>
 </body>
 </html>
