@@ -362,14 +362,14 @@
     var name = (f.name || '').trim();
     var lines = validLines();
     var out = [];
-    out.push('Hallo Anton, hier ist ' + name + '. Ich hätte gern:');
+    out.push('Hallo Anton, hier ist ' + name + '. Ich bestelle verbindlich:');
     lines.forEach(function (l) {
       var it = itemsById[l.id];
       var label = it.wildart === 'Gewürze' ? it.name : it.wildart + ' ' + it.name;
       var priceStr = it.unit === 'kg' ? '(ca. ' + fmtEur(lineTotal(it, l.qty)) + ')' : '(' + fmtEur(lineTotal(it, l.qty)) + ')';
       out.push('– ' + label + ', ' + fmtQty(it, l.qty) + ' ' + priceStr);
     });
-    out.push('Ca.-Summe: ' + fmtEur(total()));
+    out.push('Ca.-Summe: ' + fmtEur(total()) + ' (Endpreis nach Gewicht)');
     recipeLines().forEach(function (r) {
       out.push('Geplant: ' + r.name + ' für ' + r.persons + (r.persons === 1 ? ' Person' : ' Personen'));
     });
@@ -381,7 +381,7 @@
     out.push(modeLine);
     var wish = (f.wunsch || '').trim();
     if (wish) out.push('Hinweis: ' + wish);
-    out.push('Danke!');
+    out.push('Vielen Dank!');
     return out.join('\n');
   }
 
@@ -596,7 +596,7 @@
   function renderDrawer() {
     var drawer = ui.drawer;
     clear(drawer);
-    drawer.appendChild(head('Deine Anfrage', ['Deine ', { em: 'Einkaufsliste' }], 'bz-drawer-title'));
+    drawer.appendChild(head('Deine Bestellung', ['Deine ', { em: 'Einkaufsliste' }], 'bz-drawer-title'));
     var body = el('div', { class: 'bz-body' });
     infoBanners().forEach(function (b) { body.appendChild(b); });
 
@@ -629,7 +629,7 @@
 
     ui.sum = el('strong');
     body.appendChild(el('div', { class: 'bz-sum' }, [el('span', null, 'Ca.-Summe'), ui.sum]));
-    body.appendChild(el('p', { class: 'bz-sum-note' }, 'ca. – Anton wiegt ab und bestätigt den Preis.'));
+    body.appendChild(el('p', { class: 'bz-sum-note' }, 'Endpreis nach Gewicht. Anton wiegt ab und bestätigt per WhatsApp.'));
     renderSum();
 
     var f = state.form;
@@ -672,6 +672,13 @@
     wunschIn.addEventListener('input', function () { f.wunsch = wunschIn.value; saveState(); });
     form.appendChild(field('Sonderwünsche (optional)', wunschIn, false));
 
+    var bindIn = el('input', { type: 'checkbox', id: 'bz-bind', name: 'bind', required: true, 'aria-required': 'true', 'aria-describedby': 'bz-bind-err' });
+    bindIn.checked = !!f.bind;
+    bindIn.addEventListener('change', function () { f.bind = bindIn.checked; bindIn.removeAttribute('aria-invalid'); document.getElementById('bz-bind-err').classList.remove('bz-show'); saveState(); });
+    var bindLab = el('label', { for: 'bz-bind', class: 'bz-bind' }, [bindIn, el('span', null, 'Ich bestelle verbindlich. Anton legt die Stücke für mich zurück. Absagen kann ich bis zum Bestellschluss per WhatsApp.')]);
+    var bindErr = el('p', { class: 'bz-error', id: 'bz-bind-err', role: 'alert' }, 'Bitte bestätige die verbindliche Bestellung.');
+    form.appendChild(el('div', { class: 'bz-field bz-field-bind' }, [bindLab, bindErr]));
+
     body.appendChild(form);
     drawer.appendChild(body);
 
@@ -689,9 +696,15 @@
         nameIn.focus();
         return false;
       }
+      if (!f.bind) {
+        bindIn.setAttribute('aria-invalid', 'true');
+        document.getElementById('bz-bind-err').classList.add('bz-show');
+        bindIn.focus();
+        return false;
+      }
       return true;
     }
-    var send = el('a', { class: 'btn btn-whatsapp btn-block', href: waUrl(buildMessage()), target: '_blank', rel: 'noopener noreferrer' }, 'Per WhatsApp senden');
+    var send = el('a', { class: 'btn btn-whatsapp btn-block', href: waUrl(buildMessage()), target: '_blank', rel: 'noopener noreferrer' }, 'Verbindlich per WhatsApp bestellen');
     send.addEventListener('click', function (e) {
       if (!validate()) { e.preventDefault(); return; }
       send.setAttribute('href', waUrl(buildMessage()));
@@ -914,7 +927,7 @@
     var note = el('p', { class: 'bz-rp-note' }, 'Beilagen und übrige Zutaten kaufen Sie wie gewohnt ein, Anton liefert das Wild.');
     var askNode = el('p', { class: 'bz-rp-ask' });
     var addBtn = el('button', { type: 'button', class: 'btn btn-whatsapp btn-sm' }, 'Auf die Einkaufsliste setzen');
-    var directBtn = el('button', { type: 'button', class: 'btn btn-mail btn-sm' }, 'Direkt an Anton anfragen');
+    var directBtn = el('button', { type: 'button', class: 'btn btn-mail btn-sm' }, 'Direkt bei Anton bestellen');
     var actions = el('div', { class: 'bz-rp-actions' }, [addBtn, directBtn]);
 
     root.appendChild(el('h4', { class: 'bz-rp-title' }, 'Einkaufsliste für dieses Rezept'));
