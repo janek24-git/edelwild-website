@@ -386,7 +386,7 @@
   function buildShell() {
     var sr = el('div', { class: 'bz-sr', 'aria-live': 'polite', id: 'bz-live' });
     var fab = el('button', { type: 'button', class: 'bz-fab', 'aria-haspopup': 'dialog', 'aria-controls': 'bz-drawer' }, [
-      el('span', { class: 'bz-fab-label' }, 'Einkaufsliste'),
+      el('span', { class: 'bz-fab-label' }, 'Meine Einkaufsliste'),
       el('span', { class: 'bz-fab-count', 'aria-hidden': 'true' }),
       el('span', { class: 'bz-fab-sum' })
     ]);
@@ -706,10 +706,10 @@
     ui.fab.classList.add('bz-visible');
     ui.fab.classList.toggle('bz-empty', n === 0);
     ui.fab.querySelector('.bz-fab-count').textContent = n > 0 ? String(n) : '';
-    ui.fab.querySelector('.bz-fab-sum').textContent = n > 0 ? 'ca. ' + fmtEur(total()) : 'Stücke wählen';
+    ui.fab.querySelector('.bz-fab-sum').textContent = n > 0 ? 'ca. ' + fmtEur(total()) : 'Wild auswählen';
     ui.fab.setAttribute('aria-label', n > 0
-      ? 'Einkaufsliste öffnen, ' + n + (n === 1 ? ' Position' : ' Positionen') + ', ca. ' + fmtEur(total())
-      : 'Einkaufsliste öffnen, noch leer');
+      ? 'Meine Einkaufsliste öffnen, ' + n + (n === 1 ? ' Position' : ' Positionen') + ', ca. ' + fmtEur(total())
+      : 'Meine Einkaufsliste öffnen, noch leer, Wild auswählen');
   }
 
   function renderAll() {
