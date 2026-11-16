@@ -90,7 +90,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/bestellzettel.css?v=20261115c" />
+  <link rel="stylesheet" href="/bestellzettel.css?v=20261115d" />
   <style>
     :root {
       --forest:     #141a10;
@@ -901,7 +901,7 @@
 <section id="kontakt">
   <div class="container">
     <p class="section-label reveal">Direktkauf</p>
-    <h2 class="section-title reveal">Jetzt bestellen<br><em>oder anfragen</em></h2>
+    <h2 class="section-title reveal">Jetzt bestellen<br><em>direkt beim Jäger</em></h2>
     <div class="divider center reveal"></div>
     <p class="contact-intro reveal">Saisonales Angebot, begrenzte Mengen. Schreib einfach — per WhatsApp oder Mail. Anton antwortet persönlich.</p>
     <div class="contact-zettel reveal">
@@ -950,61 +950,7 @@
   <p class="footer-copy">EDELWILD · NATUR IN JEDEM BISSEN · SPESSART</p>
 </footer>
 
-<script>
-  // Nav scroll state
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-
-  // Lazy-load background images via data-src
-  function loadBgImages() {
-    document.querySelectorAll('[data-src]').forEach(el => {
-      const src = el.dataset.src;
-      const img = new Image();
-      img.onload = () => {
-        el.style.backgroundImage = `url('${src}')`;
-        el.dataset.loaded = '';
-      };
-      img.src = src;
-    });
-  }
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(loadBgImages);
-  } else {
-    window.addEventListener('load', loadBgImages);
-  }
-
-  // Burger menu
-  const burger = document.getElementById('nav-burger');
-  const navLinks = document.querySelector('.nav-links');
-  if (burger && navLinks) {
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-      burger.setAttribute('aria-label', navLinks.classList.contains('open') ? 'Menü schließen' : 'Menü öffnen');
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        burger.classList.remove('open');
-        navLinks.classList.remove('open');
-        burger.setAttribute('aria-label', 'Menü öffnen');
-      });
-    });
-  }
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 75);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-</script>
-<script defer src="/bestellzettel.js?v=20261115c"></script>
+<script defer src="/site.js?v=20261115d"></script>
+<script defer src="/bestellzettel.js?v=20261115d"></script>
 </body>
 </html>

@@ -55,6 +55,7 @@
   var lastOpener = null;
   var pickerQty = {};
   var source = 'static';
+  var dataReady = null;
 
   function parseCSV(text) {
     var rows = [];
@@ -220,8 +221,8 @@
   }
 
   function fmtPriceLabel(item) {
-    if (!item.available) return 'aktuell nicht';
     if (item.price === null) return 'Preis n. V.';
+    if (!item.available) return 'aktuell nicht';
     if (item.unit === 'kg') return fmtEur(item.price) + '/kg';
     return fmtEur(item.price);
   }
@@ -246,7 +247,9 @@
       var s = raw ? JSON.parse(raw) : null;
       if (!s || typeof s !== 'object') s = {};
       if (!Array.isArray(s.lines)) s.lines = [];
+      s.lines = s.lines.filter(function (l) { return l && typeof l.id === 'string' && typeof l.qty === 'number' && isFinite(l.qty) && l.qty > 0; });
       if (!s.form || typeof s.form !== 'object') s.form = {};
+      s.form.bind = false;
       if (!Array.isArray(s.recipes)) s.recipes = [];
       s.recipes = s.recipes.filter(function (r) { return r && typeof r.name === 'string' && Array.isArray(r.ids); });
       return s;
@@ -254,7 +257,11 @@
   }
 
   function saveState() {
-    try { sessionStorage.setItem(KEY_STATE, JSON.stringify(state)); } catch (e) {}
+    try {
+      var form = {};
+      Object.keys(state.form).forEach(function (k) { if (k !== 'bind') form[k] = state.form[k]; });
+      sessionStorage.setItem(KEY_STATE, JSON.stringify({ lines: state.lines, form: form, recipes: state.recipes }));
+    } catch (e) {}
   }
 
   function findLine(id) {
@@ -301,6 +308,14 @@
     return state.recipes.filter(function (r) {
       return r.ids.some(function (id) { return present[id]; });
     });
+  }
+
+  function clearList() {
+    state.lines = [];
+    state.recipes = [];
+    state.form.bind = false;
+    saveState();
+    renderAll();
   }
 
   function removeLine(id) {
@@ -390,7 +405,7 @@
   }
 
   function mailUrl(text) {
-    return 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Bestellanfrage Wildfleisch') + '&body=' + encodeURIComponent(text);
+    return 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Verbindliche Bestellung Wildfleisch') + '&body=' + encodeURIComponent(text);
   }
 
   function qtyControl(item, getQty, setQty) {
@@ -519,7 +534,7 @@
     var personsHint = null;
     var persons = null;
     if (hasKg) {
-      persons = el('input', { type: 'number', id: 'bz-persons', min: '1', max: '60', step: '1', inputmode: 'numeric' });
+      persons = el('input', { type: 'number', id: 'bz-persons', min: '1', max: '20', step: '1', inputmode: 'numeric' });
       personsHint = el('span', { class: 'bz-hint', 'aria-live': 'polite' });
       persons.addEventListener('input', function () {
         var p = parseInt(persons.value, 10);
@@ -543,7 +558,7 @@
       if (it.note) nameNode.appendChild(el('span', { class: 'bz-item-note' }, it.note));
       li.appendChild(nameNode);
       if (!it.available) {
-        li.appendChild(el('span', { class: 'bz-item-off' }, it.price === null && it.unit ? 'Preis n. V.' : 'aktuell nicht'));
+        li.appendChild(el('span', { class: 'bz-item-off' }, it.price === null ? 'Preis n. V.' : 'aktuell nicht'));
         ul.appendChild(li);
         return;
       }
@@ -708,6 +723,7 @@
     send.addEventListener('click', function (e) {
       if (!validate()) { e.preventDefault(); return; }
       send.setAttribute('href', waUrl(buildMessage()));
+      afterSend();
     });
     ['input', 'change'].forEach(function (evt) {
       form.addEventListener(evt, function () { send.setAttribute('href', waUrl(buildMessage())); mailBtn.setAttribute('href', mailUrl(buildMessage())); });
@@ -725,12 +741,30 @@
     mailBtn.addEventListener('click', function (e) {
       if (!validate()) { e.preventDefault(); return; }
       mailBtn.setAttribute('href', mailUrl(buildMessage()));
+      afterSend();
     });
     ui.sendBtn = send; ui.mailBtn = mailBtn;
+    var clearBtn = el('button', { type: 'button', class: 'bz-clear' }, 'Liste leeren');
+    clearBtn.addEventListener('click', function () {
+      clearList();
+      announce('Einkaufsliste geleert');
+    });
+    var sentBox = el('div', { class: 'bz-sent', hidden: true }, [
+      el('p', null, 'Deine Bestellung ist an WhatsApp übergeben. Sobald Anton bestätigt hat, kannst du die Liste leeren, damit nichts doppelt bestellt wird.'),
+      el('button', { type: 'button', class: 'btn btn-ghost btn-sm' , onclick: function () { clearList(); announce('Einkaufsliste geleert'); } }, 'Liste jetzt leeren')
+    ]);
+    function afterSend() {
+      sentBox.hidden = false;
+      f.bind = false;
+      bindIn.checked = false;
+      saveState();
+    }
     foot.appendChild(el('div', { class: 'bz-actions' }, [
       send,
       el('div', { class: 'bz-row' }, [copyBtn, mailBtn]),
-      status
+      status,
+      sentBox,
+      clearBtn
     ]));
     drawer.appendChild(foot);
   }
@@ -1049,22 +1083,26 @@
       var t = e.target.closest ? e.target.closest('[data-bz-wildart], [data-bz-item]') : null;
       if (!t) return;
       e.preventDefault();
-      var itemId = t.getAttribute('data-bz-item');
-      if (itemId) {
-        var it = itemsById[itemId];
-        if (!it) return;
-        openPicker([it], it.name, t, it.id);
-        return;
-      }
-      var w = t.getAttribute('data-bz-wildart');
-      openPicker(byWildart(w), w, t);
+      var run = function () {
+        var itemId = t.getAttribute('data-bz-item');
+        if (itemId) {
+          var it = itemsById[itemId];
+          if (!it) return;
+          openPicker([it], it.name, t, it.id);
+          return;
+        }
+        var w = t.getAttribute('data-bz-wildart');
+        openPicker(byWildart(w), w, t);
+      };
+      if (items.length || !dataReady) run();
+      else { toast('Angebot wird geladen …'); dataReady.then(run); }
     });
   }
 
   function init() {
     buildShell();
     bindTriggers();
-    loadData().then(function (data) {
+    dataReady = loadData().then(function (data) {
       items = data.items.map(function (raw) {
         return raw.id ? raw : makeItem(raw.wildart, raw.name, raw.price, raw.unit, raw.note, raw.available);
       });
